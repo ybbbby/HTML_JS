@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#div1{
+	width:100px;
+	height:100px;
+	background:red;
+	position:absolute;
+}
+#div2{
+	width:700px;
+	height: 500px;
+	background:#ccc;
+	position:fixed;
+	margin:10px;
+
+}
+</style>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+window.onload=function()
+{
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+
+	var disX=0;
+	var disY=0;
+
+	oDiv.onmousedown=function(ev)
+	{
+		var oEvent=ev||event;
+
+		disX=getPos(oEvent).x-oDiv.offsetLeft;
+		disY=getPos(oEvent).y-oDiv.offsetTop;
+		document.onmousemove=function(ev)
+		{
+			var oEvent=ev||event;
+			var l=getPos(oEvent).x-disX;
+			var t=getPos(oEvent).y-disY;
+			var r=document.documentElement.clientWidth||document.body.clientWidth;
+			r=r-oDiv2.offsetLeft;
+			if(r>oDiv2.offsetWidth)
+				r=oDiv2.offsetWidth;
+			r=r-oDiv.offsetWidth;
+			var b=document.documentElement.clientHeight||document.body.clientHeight;
+			b=b-oDiv2.offsetTop;
+			if(b>oDiv2.offsetHeight)
+				b=oDiv2.offsetHeight;
+			b=b-oDiv.offsetHeight;
+			if(l<50)
+				l=0;
+			else if(l>r-50)
+				l=r;
+			if(t<50)
+				t=0;
+			else if(t>b-50)
+				t=b;
+			oDiv.style.left=l+'px';
+			oDiv.style.top=t+'px';
+		}
+		document.onmouseup=function(ev)
+		{
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		return false;
+
+	};
+	
+};
+</script>
+</head>
+<body>
+<div id="div2">
+<div id="div1"></div>
+</div>
+</body>
+</html>

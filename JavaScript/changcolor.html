@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var aDiv=document.getElementsByTagName('li');
+			var arr={
+				a:23,
+				b:'aa'
+			};
+			for(var i in arr)
+			{
+				alert(i+':'+arr[i]);
+			}
+			for(var i=0;i<aDiv.length;i++)
+			{
+				
+				if(i%2==0)
+				{
+					aDiv[i].style.background='yellow';
+
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+</body>
+</html>

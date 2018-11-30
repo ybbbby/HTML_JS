@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.button').click(function(){
+		$('#box').animate({
+			width:'300px',
+			height:'200px',
+			opacity:0.5,
+			fontSize:'50px'
+		},1000,function(){
+			alert('finished');
+		})
+	})
+})
+</script>
+</head>
+<body>
+<input type="button" class="button" value="gogo"></input>
+<div id="box" style="background: red;width:50px">
+	box
+</div>
+</body>
+</html>

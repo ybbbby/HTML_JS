@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+
+			oBtn1.style.width='100px';
+			oBtn2.style.width='100px';
+
+			var oDiv=document.getElementById('div1');
+			var aCh=oDiv.getElementsByTagName('input');
+			oBtn1.onclick=function(){
+				if(aCh[0].checked==true)
+				{
+					for(var i=0;i<aCh.length;i++)
+					{
+						aCh[i].checked=false;
+					}
+				}
+				else
+				{
+					for(var i=0;i<aCh.length;i++)
+					{
+						aCh[i].checked=true;
+					}
+				}
+			}
+			oBtn2.onclick=function(){
+				for(var i=0;i<aCh.length;i++)
+				{
+					if(aCh[i].checked==false)
+						aCh[i].checked=true;
+					else
+						aCh[i].checked=false;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<input type="button" id="btn1" value="allcheck"><br>
+<input type="button" id="btn2" value="invertcheck"><br>
+<div id="div1">
+<input type="checkbox" ><br>
+<input type="checkbox" ><br>
+<input type="checkbox" ><br>
+</div>
+</body>
+</html>

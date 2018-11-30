@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+
+<style type="text/css">
+	.red{
+		color:red;
+	}
+	.bg{
+		background-color: #ccc;
+	}
+	.size{
+		font-size:20px;
+	}
+	.green{
+		color:green;
+	}
+</style>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('div').addClass('red bg size');
+	$('div').removeClass('bg red');
+
+/*   really stupid coding style
+
+
+	$('div').each(function(index,element){
+		element.count=0;
+	})
+	$('div').click(function()
+	{
+		$(this).get(0).count++;
+		if($(this).get(0).count%2==0)
+		{
+			$(this).removeClass('green');
+			$(this).addClass('red');
+		}
+		else
+		{
+			$(this).removeClass('red');
+			$(this).addClass('green');
+		}
+	});
+	*/
+
+	/*
+	$('div').click(function()
+	{
+		$(this).toggleClass('red');
+		if($(this).hasClass('red'))
+		{
+			$(this).removeClass('green');
+		}
+		else
+		{
+			$(this).addClass('green');
+		}
+	})
+	*/
+
+	$('div').eq(0).click(function()
+	{
+		$(this).addClass(function(){
+			if($(this).hasClass('red'))
+			{
+				$(this).removeClass('red');
+				return 'green';
+			}
+			else
+			{
+				$(this).removeClass('green');
+				return 'red';
+			}
+		});
+	});
+	$('div').eq(1).click(function()
+	{
+		$(this).toogleClass(function(index,className,switchBool){
+			if($(this).hasClass('red'))
+			{
+				$(this).removeClass('red');
+				return 'green';
+			}
+			else
+			{
+				$(this).removeClass('green');
+				return 'red';
+			}
+		});
+	});
+
+
+});
+</script>
+</head>
+<body>
+<div class="green bg" onselectstart="return false;">asdjkaskdjhakjs</div>
+<div onselectstart="return false;">akugehrlfasdoifn;aoiusdn</div>
+</body>
+</html>

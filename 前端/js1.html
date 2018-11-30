@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+window.onload=function()
+{
+	var btn=document.getElementById('btn');
+	var txt1=document.getElementById('txt1');
+	var txt2=document.getElementById('txt2');
+	var ret=[];
+	btn.addEventListener('click',function(){
+		ret=assignRed(txt1.value,txt2.value);
+		$("#output").get(0).innerHTML="";
+		for(var i=0;i<txt2.value;i++)
+		{
+			$('#output').append($('<div>'+ret[i]+'</div>'));
+		}
+	})
+}
+
+function assignRed(money,num){
+	money=money*100;
+	var ret=[];
+	var sum=money-num*1;
+	for(var i=0;i<num-1;i++)
+	{
+		random=Math.floor(Math.random()*100);
+		random=Math.floor((sum*random)/99);
+		var temp=[random,sum-random];
+
+		ret.push(temp[0]);
+		ret.push(temp[1]);
+		if(i===num-2){
+			break;
+		}
+		ret=ret.sort(function(a,b){
+			return a-b;
+		});
+		sum=ret[ret.length-1];
+
+		ret=ret.slice(0,-1);
+	}
+	ret=ret.map(function(item){
+		return (item+1)/100;
+	});
+
+	console.log(ret);
+	return ret;
+}
+</script>
+</head>
+<body>
+money<input type="text" id="txt1">
+num<input type="text" id="txt2">
+<input type="button" value="button" id="btn">
+<div id="output"></div>
+</body>
+</html>

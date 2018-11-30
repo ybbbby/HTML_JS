@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oTxt=document.getElementById('txt1');
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	var oNewWin=null;
+
+	oBtn1.onclick=function()
+	{
+		oNewWin=window.open('about:blank','_blank');
+		oNewWin.document.write(oTxt.value);
+	}
+	oBtn2.onclick=function()
+	{
+		oNewWin.close();
+	}
+}
+</script>
+</head>
+<body>
+<textarea id="txt1" rows="10" cols="40"></textarea>
+<input type="button" value="operate" id="btn1">
+<input type="button" value="close" id="btn2">
+</body>
+</html>

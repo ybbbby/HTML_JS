@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>choosecard</title>
+	<style >
+		#div1 .active{
+			background: yellow;
+		}
+		#div1 div{
+			height: 200px;
+			width: 200px;
+			border: 1px solid black;
+			background: #735858;
+			display:none;
+		}
+		#div1 input{
+			float:left;
+			display:inline-block;
+			border:1.2px outset #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div1');
+			var aBtn=oDiv.getElementsByTagName('input');
+			var aDiv=oDiv.getElementsByTagName('div');
+			for(var i=0;i<aBtn.length;i++)
+			{
+				aBtn[i].index=i;
+				aBtn[i].onclick=function()
+				{
+					oDiv.getElementsByClassName('active')[0].className='';
+					this.className='active';
+					for(var i=0;i<aDiv.length;i++)
+					{
+						aDiv[i].style.display="none";
+					}
+					aDiv[this.index].style.display="block";
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+<div id="div1">
+	<input type="button" class="active" value="EDU">
+	<input type="button" value="LEA">
+	<input type="button" value="REC">
+	<input type="button" value="ABR"><br>
+	<div style="display:block">I AM education</div>
+	<div>I AM learning</div>
+	<div>I AM recruit</div>
+	<div>I AM abroad</div>
+</div>
+</body>
+</html>

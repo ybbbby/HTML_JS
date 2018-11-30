@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="PhotoGalleryLib.js"></script>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="photo.css" />
+    <title>Photo Gallery</title>
+</head>
+
+<body>
+
+<div id="mainBody">
+    <h1>My Photo Album</h1>
+    <h1 id="size">Size</h1>
+    <table id="imagesGrid" align="center">
+        <tbody>
+        <tr>
+            <td><a href="#image1"><img width=220px  src="images/image1.jpg" /></a></td>
+            <td><a href="#image2"><img width=220px  src="images/image2.jpg" /></a></td>
+            <td><a href="#image3"><img width=220px  src="images/image3.jpg" /></a></td>
+            <td><a href="#image4"><img width=220px  src="images/image4.jpg"/></a></td>
+        </tr>
+        <tr>
+            <td><a href="#image5"><img width=220px  src="images/image5.jpg"></a></td>
+            <td><a href="#image6"><img width=220px  src="images/image6.jpg"></a></td>
+            <td><a href="#image7"><img width=220px  src="images/image7.jpg" ></a></td>
+            <td><a href="#image8"><img width=220px  src="images/image8.jpg"></a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+</body>
+
+<script>
+
+    //PhotoGalleryLib.onSizeClassChange(function(x) {
+      //  document.write(x);
+    //});
+ PhotoGalleryLib.onSizeClassChange(function(x) {
+        var element=document.getElementById("size");
+        element.innerHTML=x;
+     var parent=document.getElementById("mainBody");
+     var child=document.getElementById("imagesGrid");
+     parent.removeChild(child);
+     var element=document.getElementById("size");
+     srcs=["images/image1.jpg","images/image2.jpg","images/image3.jpg","images/image4.jpg","images/image5.jpg","images/image6.jpg","images/image7.jpg","images/image8.jpg"];
+     var  newchild=PhotoGalleryLib.generateGrid(srcs,element.innerHTML);
+     parent.appendChild(newchild);
+
+ });
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+	<script type="text/javascript">
+		function tocolor(color)
+		{
+			var oDiv=document.getElementById('div1');
+			oDiv.style.background=color;
+		}
+		function toHeight()
+		{
+			var oDiv=document.getElementById('div1');
+			oDiv.style.height='400px';
+		}
+		function toWidth()
+		{
+			var oDiv=document.getElementById('div1');
+			oDiv.style.width='400px';
+		}
+		function setStyle(name,value)
+		{
+			var oDiv=document.getElementById('div1');
+			oDiv.style[name]=value;
+		}
+	</script>
+	<style type="text/css">
+		#div1{
+			width:200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<input type="button" onclick="setStyle('background','green')" value="green">
+&nbsp
+<input type="button" onclick="setStyle('background','yellow')" value="yellow">
+&nbsp
+<input type="button" onclick="setStyle('background','black')" value="black">
+<div id="div1" style="height:200px;"></div>
+<input type="button" value="变宽" onclick="setStyle('width','400px')">
+<input type="button" value="变高" onclick="setStyle('height','400px')">
+</body>
+</html>

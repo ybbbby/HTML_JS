@@ -1,0 +1,65 @@
+*{
+	padding:0;
+	margin:0;
+	color: #45484d;
+}
+body{
+	font: 12px 'Microsoft YaHei','Hiragino Sans GB',Arial,sans-serif;
+	text-decoration: none;
+}
+.lin{
+	width: 380px;
+    height: 25px;
+    border-bottom: 2px solid #ddd;
+    text-align: center;
+    font-size:20px;
+    padding: 10px;
+    color:white;
+}
+body {
+    background: url(./images/bg.jpg) 0 -140px;
+    background-repeat: no-repeat ;
+	background-size: cover;    /*background-size: 100%;就不会使比例发生变化，图片大小发生变化，而cover不会使图片比例和大小发生变化所以有的时候看不全图片*/
+}
+.content{
+		width:400px;
+		position:absolute;
+		top:50%;
+		left:70%;
+		transform:translate(-50%,-50%);
+		background-color: rgba(252, 252,252, .2);
+}
+.box{
+		padding: 20px;
+		padding-bottom:10px;
+}
+input{
+    border: #707070 1px solid;
+    text-align: center;
+    height: 30px;
+    line-height: 28px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    user-select: text;
+    cursor: auto;
+}
+.login{
+	    background: #cdbca3;
+    border: 1px solid #A6A6A6;
+    color: #fff;
+    height: 30px;
+    width: 202px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin:10px;
+    margin-left: 90px;
+    line-height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.login:hover{
+	background: #fff;
+    color: #cdbca3;
+}

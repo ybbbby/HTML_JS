@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+var str='apc xapc,ppc bpc spc tpc pc';
+var re=/[^apx]pc/g;
+// [^asda;iojdf]之中 ^指的是匹配除了之后字符以外的字符
+// [asdlkjalks]只匹配一个字符
+alert(str.match(re));
+
+
+
+// . 表示任意字符  一般不用
+//  \d  数字 [0-9]
+//  \w  英文，数字，下划线[a-z0-9_]
+//  \s  空白字符  包括空格 tab 其他不可打印和显示的字符
+
+//  \D 除了\d以外的
+//  \W 除了\w以外的
+//  \S 除了\s以外的
+
+
+// {n} 正好出现n次
+// {n,m}最少n次，最多m次   qq号规则 [1,9]\d{4,10}
+// {n,}最少n次，最多不限   +等同于{1,}
+ 
+
+ //012-726349273-98 带区号带分机号
+ //(0\d{2,3}-)?[1-9]\d{7}(-\d{1,5})?
+ //()代表分组  ?代表了可有可无
+
+ // *代表 {0,}  一般不需要
+
+ // ^还代表行首
+ // $代表行尾
+</script>
+</head>
+<body>
+
+</body>
+</html>

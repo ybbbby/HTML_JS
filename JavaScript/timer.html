@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function show(name)
+		{
+			alert(name);
+		}
+		//setInterval(show,1000);
+		//setTimeout(show('a'),1000);
+		/*window.onload=function()
+		{
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var timer=null;
+			oBtn1.onclick=function()
+			{
+				timer=setInterval(function(){
+					alert('a');
+				},1000);
+			}
+			oBtn2.onclick=function()
+			{
+				clearInterval(timer);
+			}
+		}*/
+		window.onload=function()
+		{
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var timer=null;
+			oBtn1.onclick=function()
+			{
+				timer=setTimeout(function(){
+					alert('a');
+				},1000);
+			}
+			oBtn2.onclick=function()
+			{
+				clearTimeout(timer);
+			}
+		}
+	</script>
+</head>
+<body>
+<input type="button" id="btn1" value="start">
+<input type="button" id="btn2" value="end">
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	//可以创建一个节点对象，也可以直接在append里面加入代码，创建的对象不能重复append
+	var box=$('<div id="box">Node</div>');
+	$('body').append(box);
+	$('div').append('<div>DOM</div>');
+	$('div').append(function(index,html){
+		//index stand for the index of div, html means the HTML content (include tags!!) in the node
+		return index+html;
+	})
+
+
+	//prepend的用法和append一模一样，但是就是插到节点的前面
+});
+</script>
+</head>
+<body>
+<div>123</div>
+</body>
+</html>

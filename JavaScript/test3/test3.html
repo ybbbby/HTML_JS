@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SkinChange</title>
+	<link  id="csstest" rel="stylesheet" type="text/css" href="test32.css" >
+	<script type="text/javascript">
+		function skin1()
+		{
+			var oL=document.getElementById('csstest');
+			oL.href='test31.css';
+		}
+		function skin2()
+		{
+			var oL=document.getElementById('csstest');
+			oL.href='test32.css';
+		}
+		function changeskin()
+		{
+			var oL=document.getElementById('csstest');
+			if(test.style.display=='none')
+			{
+				oL.href='test31.css';
+			}
+			else
+			{
+				oL.href='test32.css';
+			}
+		}
+	</script>
+</head>
+<body>
+<input  id="qwe" type="button" value="skin1" onclick="skin1()">
+<input type="button" value="skin2" onclick="skin2()">
+<input type="button" value="qweqwe" onclick="changeskin()" title="you can change from one side to another">
+<div id="test">qweqweqwe</div>
+</body>
+</html>

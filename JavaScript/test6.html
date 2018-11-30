@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			border:1px solid black;
+			height: 200px;
+			width: 200px;
+			float: left;
+			margin:10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aDiv=document.getElementsByTagName("div");
+			var a=3.5;
+			alert(parseFloat(a));
+			var i=0
+			while(i<aDiv.length){
+			aDiv[i].style.background='red';
+			i++;
+			}
+		}
+	</script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+*{padding:0;margin:0;}
+ul,li{list-style:none;list-style-position:outside;}
+img{border:none;vertical-align:middle;}
+body div .bordernone{border:none;}
+textarea{overflow:auto;font-size:13px;}
+
+.textc{text-align:center;}
+table{width:100%;}
+
+body{
+	color:#666666;
+	font-size:14px;
+	font-family:Microsoft YaHei,Tahoma,Verdana,Arial,Helvetica,sans-serif;
+}
+
+#content{
+	padding:50px 0;
+}
+#previewpage2{
+	background:none;
+}
+#previewpage2 #content{
+	padding:25px 10px;
+}
+.contdiv{
+	width:918px;
+	margin:0 auto;
+}
+
+#content .contdiv .l{
+	width:166px;
+}
+#content .contdiv .r{
+	width:712px;
+}
+.tdname{
+	color:#444;
+	width:220px;
+	text-align:right;
+	padding:12px 16px 12px 0;
+}
+.pt12{
+	padding-top: 12px;
+    vertical-align: top;
+}
+#previewcont{
+	width:830px;
+	margin:0 auto;
+}
+#previewcont .item{
+	padding:15px 0 15px;
+	border-bottom:2px solid #c5e7c6;
+}
+#previewpage2 #previewcont .item{
+	border-bottom:none;
+}
+#previewcont .t{
+	font-size:18px;
+	color:#66A925;
+}
+#previewpage2 .zoomin,#previewpage .zoomin{
+	max-width:242px;
+}
+.zoomin{
+	cursor:url(../image/zoomin.cur),pointer;
+}
+#previewpage2 table{
+	border-collapse:collapse;
+}
+#previewpage2 td{
+	padding:12px;
+}
+#previewpage2 .tdname{
+	width:208px;
+}

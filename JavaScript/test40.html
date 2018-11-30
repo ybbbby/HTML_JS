@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#div1{
+	width:200px;
+	height:200px;
+	background:red;
+	position:absolute;
+}
+.box{
+	border:1px dashed black;
+	position: absolute;
+}
+</style>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+window.onload=function()
+{
+	var oDiv=document.getElementById('div1');
+	var oBox;
+	var oBody=document.getElementsByTagName('body')[0];
+	var disX=0;
+	var disY=0;
+	oDiv.onmousedown=function(ev)
+	{
+		var oEvent=ev||event;
+
+		disX=getPos(oEvent).x-oDiv.offsetLeft;
+		disY=getPos(oEvent).y-oDiv.offsetTop;
+
+		oBox=document.createElement('div');
+		oBox.className='box';
+		oBox.style.width=oDiv.offsetWidth+'px';
+		oBox.style.height=oDiv.offsetHeight+'px';
+		oBox.style.left=oDiv.offsetLeft+'px';
+		oBox.style.top=oDiv.offsetTop+'px';
+
+		oBody.appendChild(oBox);
+
+		if(oDiv.setCapture)
+		{
+			oDiv.onmousemove=mouseMove;
+			oDiv.onmouseup=mouseUp;
+			oDiv.setCapture();
+	
+		//保证文字和拖拽没有互动  CROME FF IE9 但是IE6-8不行
+			return false;
+		}
+		else
+		{
+			document.onmousemove=mouseMove;
+			document.onmouseup=mouseUp;
+	
+		//保证文字和拖拽没有互动  CROME FF IE9 但是IE6-8不行
+			return false;
+		}
+
+	};
+	function mouseMove(ev)
+	{
+		var oEvent=ev||event;
+		var l=getPos(oEvent).x-disX;
+		var t=getPos(oEvent).y-disY;
+		var r=document.documentElement.clientWidth||document.body.clientWidth;
+		r=r-oDiv.offsetWidth;
+		var b=document.documentElement.clientHeight||document.body.clientHeight;
+		b=b-oDiv.offsetHeight;
+		if(l<0)
+			l=0;
+		else if(l>r)
+			l=r;
+		if(t<0)
+			t=0;
+		else if(t>b)
+			t=b;
+		oBox.style.left=l+'px';
+		oBox.style.top=t+'px';
+	}
+	function mouseUp()
+	{
+		this.onmousemove=null;
+		this.onmouseup=null;
+
+		oDiv.style.left=oBox.offsetLeft+'px';
+		oDiv.style.top=oBox.offsetTop+'px';
+
+		oBody.removeChild(oBox);
+		if(this.releaseCapture)
+		{
+			this.releaseCapture();
+		}
+	}
+	
+};
+</script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

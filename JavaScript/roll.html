@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+
+	#div1{
+		width:200px;
+		height: 200px;
+		background:red;
+		position:absolute;
+		left: 0;
+		top:50px;
+		
+	}
+	
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+oDiv=document.getElementById('div1');
+setInterval(function()
+{
+	oDiv.style.left=(oDiv.offsetLeft+10)+"px";
+},30);
+
+};
+
+</script>
+</head>
+<body>
+<div id="div1" onclick="alert(this.offsetLeft)"></div>
+</div>
+</body>
+</html>

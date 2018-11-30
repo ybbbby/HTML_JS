@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	//在外层添加一个节点
+	//$('div').wrap("<strong>ss<em></em></strong>");
+
+	//wrap里面还可以放一个DOM原生节点
+	var box=$('<strong>ss<em>aa</em></strong>');
+	$('div').wrap(box.get(0));
+	//$('div').wrap(document.createElement('strong'));
+	$('div').unwrap();
+})
+</script>
+</head>
+<body>
+<div>I am Div</div>
+</body>
+</html>

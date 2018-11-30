@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	#box{
+		width:100px;
+		height: 100px;
+		background: red;
+		position:absolute;
+	}
+	.teset{
+		padding:5px;
+		margin-right: 5px;
+		background:orange;
+		float:left;
+		display:none;
+	}
+</style>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.button').click(function(){
+		$('#box').animate({
+			left:'800px'
+		},3000)
+	})
+	$('.button1').click(function(){
+		$('#box').stop();
+		//$('#box').stop(true);
+		$('#box').stop(true,true);
+		//如果有列队动画，停止的话，那会停止第一个列队动画，然后继续执行后面的列队动画
+		//如果第一个参数为true这清除所有队列
+		//如果第二个参数为true，则消除动画，直接抵达最后的位置
+	})
+	$('.button2').click(function(){
+		$('#box').animate({left:'300px'})
+				 .animate({bottom:'300px'}).delay(2000)
+				 .animate({width:'300px'})
+				 .animate({height:'300px'})
+	});
+})
+</script>
+</head>
+<body>
+<input type="button" class="button" value="gogo"></input>
+<input type="button" class="button1" value="gogo1"></input>
+<input type="button" class="button2" value="gogo2"></input>
+<div id="box">
+	box
+</div>
+</body>
+</html>

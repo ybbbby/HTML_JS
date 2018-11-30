@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oTxt=document.getElementById('txt1');
+	var oBtn=document.getElementById('btn1');
+	oBtn.onclick=function()
+	{
+		var re=/^\w+@[a-z0-9]+\.(com|cn){1}$/i;
+		if(re.test(oTxt.value))
+		{
+			alert('good emailAddress');
+		}
+		else
+		{
+			alert('illegal emailAddress');
+		}
+	}
+}
+</script>
+</head>
+<body>
+<input type="text" id="txt1" name=""><br>
+<input type="button" id="btn1" value="judge"><br>
+</body>
+</html>

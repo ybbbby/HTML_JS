@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width: 150px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			left:-150px;
+		}
+		#div1 span{
+			position: absolute;
+			width:40px;
+			height:20px;
+			line-height: 20px;
+			background: yellow;
+			right:-40px;
+			top:70px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div1');
+			oDiv.onmouseover=function()
+			{
+				startMove(20);
+			};
+			oDiv.onmouseout=function()
+			{
+				startMove(-20);
+			};
+		}
+		var timer=null;
+		function startMove(speed)
+		{
+			var oDiv=document.getElementById('div1');
+
+			clearInterval(timer);
+			timer=setInterval(function()
+			{
+				if((speed>0 &&oDiv.offsetLeft>=-10) ||(speed<0 &&oDiv.offsetLeft<=-150))
+				{
+					clearInterval(timer);
+				}
+				else
+				{
+					oDiv.style.left=oDiv.offsetLeft+speed+"PX";
+				}
+			},30);
+		}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<span>Share</span>
+</div>
+
+</body>
+</html>

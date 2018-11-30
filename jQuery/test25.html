@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	//穿过子元素也会触发
+	$('div').mouseover(function(){
+		$(this).css('background','blue');
+	}).mouseout(function(){
+		$(this).css('background','red');
+	});
+	//穿过子元素不会触发
+	$('div').mouseenter(function(){
+		$(this).css('background','green');
+	}).mouseleave(function(){
+		$(this).css('background','brown');
+	});
+	$(window).keydown(function(ev){
+		alert((ev.keyCode));
+	});
+	/*在标准的DOM 中：既有keyCode属性，还有charCode 属性。
+	但在标准的DOM 中，keypress 事件中keyCode 属性值始终为0 值；
+在IE 浏览器中：事件对象只有keyCode属性，没有charCode 属性。
+	但在IE 浏览器中，keypress 事件中的keyCode 属性值等同于标准DOM 中的charCode 属性的值；
+IE下，keyCode：对于keypress事件，表示按下按键的Unicode字符；对于keydown/keyup  事件，表示按下按键的数字代码。无charCode属性。
+DOM标准下keyCode：表示按下按键的数字代码。charCode：按下按键的Unicode字符。*/
+
+
+
+
+//focus blur子元素不能触发
+	$('input').focus(function(){
+		$(this).css('border','solid 5px purple');
+	});
+	$('input').blur(function(){
+		$(this).css('border','solid 1px purple');
+	});
+//focusin focusout子元素也能触发
+	$('input').focusin(function(){
+
+	});
+	$('input').focusout(function(){
+
+	});
+	$('input').focus();
+	
+});
+</script>
+</head>
+<body>
+<input type="text" name="">
+<div style="width:200px;height: 200px;background:red"></div>
+
+</body>
+</html>

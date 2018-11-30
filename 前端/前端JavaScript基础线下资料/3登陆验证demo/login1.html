@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style type="text/css">
+    html,
+    body{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    body{
+      background-image: url('167081-106.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .login__box{
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255,255,255,.6);
+    }
+    .login__header{
+      height: 50px;
+      text-align: center;
+      border-bottom: 3px solid #fff;
+    }
+    h2{
+      color: #3b5e88;
+    }
+    .login__body{
+      padding: 20px;
+    }
+    .form__group{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px; 
+    }
+    label{
+      display: inline-block;
+      margin-right: 1em;
+      width: 4em;
+    }
+    input,select{
+      width: 250px;
+      height: 30px;
+      border: 1px solid #f3f3f3;
+      border-radius: 4px;
+      font-size: 16px;
+      text-indent: 1em;
+    }
+
+    button{
+      width: 337px;
+      height: 35px;
+      background-color: hsl(213, 39%, 39%);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover,button:active,button:focus{
+      background-color: hsl(213, 39%, 42%)
+    }
+
+    small{
+      color: red;
+    }
+    .form__group.error input,
+      .form__group.error select{
+        border: red dotted 1px;
+      }
+  </style>
+</head>
+<body>
+  <div class="login__box">
+    <div class="login__header">
+      <h2>登&nbsp;&nbsp;录&nbsp;&nbsp;界&nbsp;&nbsp;面</h2>
+    </div>
+    <div class="login__body">
+      <form method="get">   
+        <div class="form__group">
+          <label for="username">用户名</label>
+          <input id="username" name="username" type="text" placeholder="请输入用户名">
+
+        </div>
+        <div class="form__group">
+          <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+          <input id="password" name="password" type="password" placeholder="请输入密码">
+        </div>
+        <div class="form__group">
+          <label for="school">学&nbsp;&nbsp;&nbsp;&nbsp;校</label>
+          <select name="school" id="school">
+            <option value="">--请选择学校--</option>
+            <option value="1">华中科技大学</option>
+            <option value="2">武汉大学</option>
+            <option value="3">武汉理工大学</option>
+            <option value="4">中南财经政法大学</option>
+          </select>
+        </div>
+        <div class="form__group">
+          <button type="submit">登&nbsp;录</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    var form = document.querySelector('form');
+    var els = [];
+    els[0] = document.querySelector('[name = "username"]');
+    els[1] = document.querySelector('[name = "password"]');
+    els[2] = document.querySelector('[name = "school"]');
+
+    var smallInfo = ['用户名不能为空','密码至少要6位','请选择学校'];
+
+    smallInfo.forEach(function(item,index){
+      var small = document.createElement('small');
+      small.innerHTML = item;
+      els[index].parentNode.appendChild(small);
+      small.style.display = 'none';
+    });
+
+    // var username = document.getElementById('username');
+    // var password = document.getElementById('password');
+    // var school = document.getElementById('school');
+    // var smallUser = document.createElement('small');
+    // var smallPass = document.createElement('small');
+    // var smallSchool = document.createElement('small');
+
+    // var form = document.querySelector('form');
+
+    // smallUser.innerHTML = '用户名不能为空';
+    // smallPass.innerHTML = '密码至少要6位';
+    // smallSchool.innerHTML = '请选择学校';
+    // username.parentNode.appendChild(smallUser);
+    // password.parentNode.appendChild(smallPass);
+    // school.parentNode.appendChild(smallSchool);
+    // smallUser.style.display = 'none';
+    // smallPass.style.display = 'none';
+    // smallSchool.style.display = 'none';
+
+    function errorVal(el,evt){
+      el.nextElementSibling.style.display = 'block';
+      el.parentNode.className = 'form__group error';
+      evt.preventDefault();
+    }
+
+    form.addEventListener('submit',function(evt){
+
+      els.forEach(function(item){
+        item.nextElementSibling.style.display = 'none';
+        item.parentNode.className = 'form__group';
+      });
+
+      if(!username.value){
+        errorVal(els[0],evt);
+      }
+      if(password.value.length < 6){
+        errorVal(els[1],evt);
+      }
+      if(!school.value){
+        errorVal(els[2],evt);
+      }
+    });
+
+    function changeVal(el,flag){
+      if(flag){
+        el.nextElementSibling.style.display = 'inline-block';
+        el.parentNode.className = 'form__group error';
+      }
+      else{
+        el.nextElementSibling.style.display = 'none';
+        el.parentNode.className = 'form__group';
+      }
+    }
+
+    els[0].addEventListener('input',function(){
+      var flag = !this.value
+      changeVal(this,flag);
+    });
+    els[1].addEventListener('input',function(){
+      var flag = this.value.length < 6;
+      changeVal(this,flag);
+    });
+
+    els[2].addEventListener('change',function(){
+      var flag = !this.value;
+      changeVal(this,flag);
+    });
+  </script>
+</body>
+</html>

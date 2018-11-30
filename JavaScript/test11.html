@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('ul1');
+			//alert(oUl.childNodes.length);
+			for(var p=0;p<oUl.childNodes.length;p++)
+			{
+				//alert(oUl.childNodes[p].nodeType);
+				if(oUl.childNodes[p].nodeType==1)
+				{
+					oUl.childNodes[p].style.background="red";
+				}	
+			}
+			/*for(var i=0 ;i<oUl.childNodes.length;i++)
+			{
+				oUl.children[i].style.background="red";
+			}*/
+			
+		}
+	</script>
+</head>
+<body>
+<ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

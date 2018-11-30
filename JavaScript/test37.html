@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+function addEvent(obj,ev,fn)
+{
+	if(obj.attachEvent)
+	{
+		obj.attachEvent('on'+ev,fn);
+	}
+	else
+	{
+		obj.addEventListener(ev,fn,false);
+	}
+}
+function delEvent(obj,ev,fn)
+{
+	if(obj.detachEvent)
+	{
+		obj.detachEvent('on'+ev,fn);
+	}
+	else
+	{
+		obj.removeEventListener(ev,fn,false);
+	}
+}
+window.onload=function()
+{
+	var oBtn=document.getElementById('btn1');
+
+	addEvent(oBtn,'click',function a()
+	{
+		alert('a');
+	});
+	addEvent(oBtn,'click',function b()
+	{
+		alert('b');
+		//delEvent(oBtn,'click','a');
+
+	});
+  	/* 
+  	IE
+	oBtn.attachEvent('onclick',function(){
+		alert('asd');
+	});
+	oBtn.attachEvent('onclick',function(){
+		alert('ASD');
+	});
+	*/
+
+	//crome FF
+	/*addEventListener('eventname',function,false)
+	oBtn.addEventListener('click',function()
+	{
+		alert('a');
+	},false);
+	oBtn.addEventListener('click',function()
+	{
+		alert('b');
+	},false);
+	*/
+
+}
+</script>
+</head>
+<body>
+<input type="button" id="btn1" value="button" >
+</body>
+</html>

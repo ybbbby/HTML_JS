@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.show').click(function(){
+		$('#box').show(1000);
+	})
+	$('.hide').click(function(){
+		$("#box").hide(1000,function(){
+			alert('end');
+		});
+	})
+	$('.slideup').click(function(){
+		$('#box').slideUp('normal');
+	})
+	$('.slidedown').click(function(){
+		$('#box').slideDown('normal');
+	})
+	$('.in').click(function(){
+		$('#box').fadeIn('normal');
+	})
+	$('.out').click(function(){
+		$('#box').fadeOut('normal');
+	})
+})
+</script>
+<style type="text/css">
+	#box{
+		width: 100px;
+		height:100px;
+		background: red;
+	}
+</style>
+</head>
+<body>
+<input type="button" class="show" value="show" name="">
+<input type="button" class="hide" value="hide" name="">
+
+<input type="button" class="slideup" value="Up" name="">
+<input type="button" class="slidedown" value="Down" name="">
+
+<input type="button" class="in" value="In" name="">
+<input type="button" class="out" value="Out" name="">
+<div id="box">
+	
+</div>
+</body>
+</html>

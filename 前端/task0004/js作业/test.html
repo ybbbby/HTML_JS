@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	img{
+		float:left;
+		height:300px;
+	}
+	#continer{
+		width:500px;
+		height:300px;
+		position:relative;
+		margin:auto;
+		margin-top:110px;
+	}
+	#continer>div{
+	    float: left;
+	    margin:3em;
+		width: 150px;
+		text-align: center;
+		height: 40px;
+		line-height:40px;
+	}
+	#xiaoxin{
+		background: url(./images/btn-gray.png) no-repeat center;
+		color:lightblue;
+	}
+	#bawei{
+		background: url(./images/btn-blue.png) no-repeat center;
+		color:gray;
+	}
+	body{
+		background:url(./images/bw-bg.png) no-repeat;
+		background-size: cover;
+	}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oImg=document.getElementsByTagName('img')[0];
+	var oBtn1=document.getElementById('xiaoxin');
+	var oBtn2=document.getElementById('bawei');
+	var oBody=document.getElementsByTagName('body')[0];
+	oBtn1.onclick=function(){
+		oImg.src=oImg.src.replace(/bw\.png/,"xx.jpg");
+		oBtn1.style.backgroundImage="url(./images/btn-blue.png)";
+		oBtn2.style.backgroundImage="url(./images/btn-gray.png)";
+		oBody.style.backgroundImage="url(./images/xx-bg.png)";
+		oBtn1.style.color="grey";
+		oBtn2.style.color="lightblue";
+	}
+	oBtn2.onclick=function(){
+		oImg.src=oImg.src.replace(/xx\.jpg/,"bw.png");
+		oBtn1.style.backgroundImage="url(./images/btn-gray.png)";
+		oBtn2.style.backgroundImage="url(./images/btn-blue.png)";
+		oBody.style.backgroundImage="url(./images/bw-bg.png)";
+		oBtn1.style.color="lightblue";
+		oBtn2.style.color="gray";
+	}
+}
+</script>
+</head>
+<body>
+<div id="continer">
+	<img  id="img" src="./images/bw.png">
+	<div id="xiaoxin"><span>小新</span></div>
+	<div id="bawei"><span>巴卫</span></div>
+</div>
+</body>
+</html>

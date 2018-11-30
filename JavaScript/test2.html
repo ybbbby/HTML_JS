@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test2</title>
+	<style type="text/css">
+		#div1 {width:200px;height:200px;background:red;}
+	</style>
+	<script type="text/javascript">
+	var width=50;
+		function toGreen()
+		{
+			var k=document.getElementById('div1').style;
+			k.width='300px';
+			k.height='300px';
+			k.background='green';
+		}
+		function toRed()
+		{   
+
+			var k=document.getElementById('div1').style;
+			k.width='200px';
+			k.height='200px';
+			k.background='red';
+		}
+</script>
+</head>
+<body>
+<div id="div1" onmouseover="toGreen()" onmouseout="toRed()"></div>
+<input type="button" name="">
+</body>
+</html>

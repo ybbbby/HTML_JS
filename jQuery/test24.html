@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('input').on('mouseover mouseleave',function(){
+		$('div').width(parseInt($('div').width())+10+'px');
+		$('div').height(parseInt($('div').height())+10+'px');
+	})
+	$('div').on({
+		mouseover:function(){
+			$(this).css("background-color",'red');
+		},
+		mouseleave:function(){
+			$(this).css("background-color",'blue');
+		},
+		dblclick:function(){
+			$(this).off();//删除全部事件double click必然会先出发click
+		},
+		click:function(){
+			$('input').off('mouseover');
+			//$(this).off('dblclick');
+		}
+	});
+	$('input').select(function(){
+		alert('text select');
+	})                               //只有在文本框总的文字选中才会有效果
+	
+	$('input').change(function(){
+		alert('text change');
+	})           
+
+})
+</script>
+<style type="text/css">
+	div{
+		background-color: red;
+		height:20px;
+		width: 20px;
+	}
+</style>
+</head>
+<body>
+<input type="text" >
+<input type="button" value="button">
+<div>ssss</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+*{
+	margin:0;
+	padding: 0;
+	list-style:none;
+}
+#div1{
+	position:absolute;
+	width:80px;
+	background:#ccc;
+	border:2px solid black;
+	display:none;
+}
+li{
+	border-bottom: solid 1px;
+}
+</style>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+document.oncontextmenu=function(ev)
+{
+	oEvent=ev||event;
+	var oDiv=document.getElementById('div1');
+	var pos=getPos(oEvent);
+	oDiv.style.left=pos.x+'px';
+	oDiv.style.top=pos.y+'px';
+	oDiv.style.display="block";
+	oEvent.cancelBubble=true; 
+	return false;
+};
+document.onclick=function(ev)
+{
+	oEvent=ev||event;
+	var oDiv=document.getElementById('div1');
+	var pos=getPos(oEvent);
+	if(pos.x<oDiv.offsetLeft+oDiv.offsetWidth&&pos.x>oDiv.offsetLeft)
+	{
+		if(pos.y<oDiv.offsetTop+oDiv.offsetHeight&&pos.y>oDiv.offsetTop)
+			return;
+	}
+	oDiv.style.display="none";
+}
+</script>
+</head>
+<body>
+<div id="div1">
+	<ul>
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+	</ul>
+</div>
+</body>
+</html>

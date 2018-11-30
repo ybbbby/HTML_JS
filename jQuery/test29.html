@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*
+	$('.button').bind('click',function(){
+		$(this).clone(true).appendTo('#box');
+	})*/
+	var i=0;
+	$('#box').on('click','.button',function(){
+		$(this).clone().appendTo('#box');
+	})
+	$('#change').on('click',function(){
+		if(i%2==0)
+		{
+			$('#box').off("click",'.button');
+			$('#box').on('click','.button',function(){
+				$(this).remove();
+			})
+		}
+		else
+		{
+
+			$('#box').off("click",'.button');
+			$('#box').on('click','.button',function(){
+				$(this).clone().appendTo('#box');
+			})
+		}
+		i++;
+	})
+})
+</script>
+</head>
+<body>
+<div style="width:200px;height: 200px; background: red;" id="box">
+	<input type="button" class="button" value="button" name="">
+</div>
+<input type="button" value="change" id="change" name="" style="float:left;">
+</body>
+</html>

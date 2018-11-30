@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta charset="utf-8">
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	//alert($('div').html());
+	//alert($('div').text());//会注释html标签
+	$('div').text('<p>asd</p>');//将html内容改成<p>asd</p>,会被转义
+
+	//alert($('input').val());
+	$('input').eq(0).val('asd');
+
+	//alert($('input').eq(1).val());
+
+	//alert($('body').contents()[7]);         //看出选中没有标签的text元素非常复杂
+
+	$('input').slice(1).val(['qq','ee']);
+
+
+	//alert($('#div1').attr('id'));
+	$('#div1').attr('id','asd');
+	$('#asd').attr({
+		'id':'div1',
+		'class':'red',
+		'title':'qwe'
+	}).text('asdsss');
+
+	//index参数代表了div的索引,value表示要修改key的修改前的值
+	$('div').attr('title',function(index,value)
+	{
+		return "the Original title is:"+value+"\nNow title is:I'm No."+index;
+	});
+
+	$('#div1').html(function(index,value){
+		return value+' GOGOGO APEND CONTENT';
+	})
+
+	$('input:first').removeAttr('value');
+})
+</script>
+</head>
+<body>
+<div>
+	123
+	<strong>strong</strong>
+	234
+</div>
+
+
+<input type="text" value="asd"><br>
+<input type="radio" value="qq">qq
+<input type="radio" value='ww'>ww
+<input type="checkbox" value='ee'>ee
+
+<div id="div1">123123</div>
+</body>
+</html>

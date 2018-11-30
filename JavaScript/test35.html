@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+window.onload=function()
+{
+	var oTxt=document.getElementById('txt1');
+
+	oTxt.onkeydown=function(ev)
+	{
+		var oEvent=ev||event;
+
+		if((oEvent.keyCode<48||oEvent.keyCode>57)&&(oEvent.keyCode!=8)&&(oEvent.keyCode!=37)&&(oEvent.keyCode!=39))
+			return false;
+	}
+}
+</script>
+</head>
+<body>
+<input type="text" id="txt1" >
+</body>
+</html>

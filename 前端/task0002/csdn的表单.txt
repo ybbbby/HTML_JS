@@ -1,0 +1,66 @@
+<form id="fm1" action="https://passport.csdn.net/account/login;jsessionid=A5CCB9C4FFFE8FA5E6D9F47C40848825.tomcat2?from=http://my.csdn.net/my/mycsdn" method="post">
+
+                    <input id="username" name="username" tabindex="1" placeholder="输入用户名/邮箱/手机号" class="user-name" type="text" value="">
+                    
+                    <input id="password" name="password" tabindex="2" placeholder="输入密码" class="pass-word" type="password" value="" autocomplete="off">
+                   
+                    
+						
+						
+							<div class="error-mess" style="display:block;">
+								<span class="error-icon"></span><span id="error-message"></span>
+							</div>
+						
+					
+					
+                    <div class="row forget-password">
+                    	<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        	<input type="checkbox" name="rememberMe" id="rememberMe" value="true" class="auto-login" tabindex="4">
+                        	<label for="rememberMe">下次自动登录</label>
+                        </span>
+                        <span class="col-xs-6 col-sm-6 col-md-6 col-lg-6 forget tracking-ad" data-mod="popu_26">
+                        	<a href="https://passport.csdn.net/account/fpwd?action=forgotpassword&amp;service=http%3A%2F%2Fmy.csdn.net%2Fmy%2Fmycsdn" tabindex="5">忘记密码</a>
+                        </span>
+                    </div>
+                    <!-- 该参数可以理解成每个需要登录的用户都有一个流水号。只有有了webflow发放的有效的流水号，用户才可以说明是已经进入了webflow流程。否则，没有流水号的情况下，webflow会认为用户还没有进入webflow流程，从而会重新进入一次webflow流程，从而会重新出现登录界面。 -->
+					<input type="hidden" name="lt" value="LT-1473603-k2yJsVz3A4mVPCFvgpibgy3eK6uxNp">
+			 		<input type="hidden" name="execution" value="e1s1"> 
+					<input type="hidden" name="_eventId" value="submit"> 
+					<input class="logging" accesskey="l" value="登 录" tabindex="6" type="button"> 
+                    
+                  </form>
+
+
+
+将最后一个submit的input改为button这样就可以回车输入了
+	<form id="fm1" action="https://passport.csdn.net/account/login;jsessionid=A5CCB9C4FFFE8FA5E6D9F47C40848825.tomcat2?from=http://my.csdn.net/my/mycsdn" method="post">
+
+                    <input id="username" name="username" tabindex="1" placeholder="输入用户名/邮箱/手机号" class="user-name" type="text" value="">
+                    
+                    <input id="password" name="password" tabindex="2" placeholder="输入密码" class="pass-word" type="password" value="" autocomplete="off">
+                   
+                    
+						
+						
+							<div class="error-mess" style="display:block;">
+								<span class="error-icon"></span><span id="error-message"></span>
+							</div>
+						
+					
+					
+                    <div class="row forget-password">
+                    	<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        	<input type="checkbox" name="rememberMe" id="rememberMe" value="true" class="auto-login" tabindex="4">
+                        	<label for="rememberMe">下次自动登录</label>
+                        </span>
+                        <span class="col-xs-6 col-sm-6 col-md-6 col-lg-6 forget tracking-ad" data-mod="popu_26">
+                        	<a href="https://passport.csdn.net/account/fpwd?action=forgotpassword&amp;service=http%3A%2F%2Fmy.csdn.net%2Fmy%2Fmycsdn" tabindex="5">忘记密码</a>
+                        </span>
+                    </div>
+                    <!-- 该参数可以理解成每个需要登录的用户都有一个流水号。只有有了webflow发放的有效的流水号，用户才可以说明是已经进入了webflow流程。否则，没有流水号的情况下，webflow会认为用户还没有进入webflow流程，从而会重新进入一次webflow流程，从而会重新出现登录界面。 -->
+					<input type="hidden" name="lt" value="LT-1473603-k2yJsVz3A4mVPCFvgpibgy3eK6uxNp">
+			 		<input type="hidden" name="execution" value="e1s1"> 
+					<input type="hidden" name="_eventId" value="submit"> 
+					<button class="logging" accesskey="l" tabindex="6">登 录</button>
+                    
+                  </form>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	var asd=$('div').css(['color','width','height']);//默认选择器的第一项的属性返回给asd
+	//alert(asd);
+	//asd是一个json{color:xxx,
+	//				width:xxx,
+	//				height:xxx}
+
+	/*for(var i in asd){
+		alert(i+" "+asd[i]);
+	}*/
+	$.each(asd,function(attr,value){
+		alert(attr+':'+value);
+	})
+	//遍历asd asd是JS原生对象
+
+	$('div').each(function(index,element){
+		alert(index+':'+element);
+	})
+
+	$('div').css({
+		'color':'blue',
+		'background-color':'#eee',
+		'height':'30px',
+		'width':'200px'
+	})
+
+	$('div').css('width',function(index/*div的索引，是第一个div还是第二个div*/,value/**/)
+	{
+		return(parseInt(value)+500+'px');
+	})
+})
+
+</script>
+</head>
+<body>
+<div title="aaa" style="width:200px">alsdiuflasdf</div>
+<div title="bbb" style="width:300px">alsdiuflasdf</div>
+</body>
+</html>

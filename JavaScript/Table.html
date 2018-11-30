@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var oTab=document.getElementById('tab1');
+		var oldColor;
+		var name=document.getElementById('name');
+		var age=document.getElementById('age');
+		var btn=document.getElementById('btn1');
+		var sbtn=document.getElementById('sbtn');
+		var stxt=document.getElementById('stxt');
+		var sortId=oTab.tHead.rows[0].cells[0];
+		var sortName=oTab.tHead.rows[0].cells[1];
+		var sortAge=oTab.tHead.rows[0].cells[2];
+		var IdUp=0,NameUp=0,AgeUp=0;
+		sortId.onclick=function()
+		{
+			var arr=[];
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				arr[i]=oTab.tBodies[0].rows[i];
+			}
+			arr.sort(function(tr1,tr2){
+				if(IdUp==0)
+				{
+					return parseInt(tr1.children[0].innerHTML)-parseInt(tr2.children[0].innerHTML)
+				}
+				else
+				{
+					return parseInt(tr2.children[0].innerHTML)-parseInt(tr1.children[0].innerHTML)
+				}
+			});
+			IdUp=1-IdUp;
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				oTab.tBodies[0].appendChild(arr[i]);
+			}
+			check();
+		}
+		sortName.onclick=function()
+		{
+			var arr=[];
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				arr[i]=oTab.tBodies[0].rows[i];
+			}
+			arr.sort(function(tr1,tr2){
+				if(tr1.children[1].innerHTML.toLowerCase()>tr2.children[1].innerHTML.toLowerCase())
+				{
+					if(AgeUp==0)
+						return 1;
+					else
+						return -1;
+				}
+				else if(tr1.children[1].innerHTML.toLowerCase()<tr2.children[1].innerHTML.toLowerCase())
+				{
+					if(AgeUp==0)
+						return -1;
+					else
+						return 1;
+				}
+				else
+					return 0;
+			});
+			AgeUp=1-AgeUp;
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				oTab.tBodies[0].appendChild(arr[i]);
+			}
+			check();
+		}
+		sortAge.onclick=function()
+		{
+			var arr=[];
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				arr[i]=oTab.tBodies[0].rows[i];
+			}
+			arr.sort(function(tr1,tr2){
+				if(AgeUp==0)
+				{
+					return parseInt(tr1.children[2].innerHTML)-parseInt(tr2.children[2].innerHTML)
+				}
+				else
+				{
+					return parseInt(tr2.children[2].innerHTML)-parseInt(tr1.children[2].innerHTML)
+				}
+			});
+			AgeUp=1-AgeUp;
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				oTab.tBodies[0].appendChild(arr[i]);
+			}
+			check();
+		}
+
+
+
+		var num=oTab.tBodies[0].rows.length+1;
+		sbtn.onclick=function()
+		{
+			var arr=stxt.value.toLowerCase().split(' ');
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML;
+				oTab.tBodies[0].rows[i].style.background="";
+				for(var j=0;j<arr.length;j++)
+				{
+					if(sTab.toLowerCase().search(arr[j])>=0 && arr[j]!="")
+					{
+						oTab.tBodies[0].rows[i].style.background="yellow";
+					}
+				}
+				if(oTab.tBodies[0].rows[i].style.background!="yellow")
+				{
+					if(i%2==0)
+					{
+						oTab.tBodies[0].rows[i].style.background="#ccc";
+					}
+					else
+					{
+						oTab.tBodies[0].rows[i].style.background="";
+					}
+				}
+			}
+		}
+		//alert(oTab.children[1].children[1].children[0]['innerHTML']);
+		//alert(oTab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[1].getElementsByTagName('td')[0].innerHTML);
+
+		/*表格的简易操作*/
+		//alert(oTab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[1].getElementsByTagName('td')[0].innerHTML);
+		//alert(oTab.tBodies[0].rows[1].cells[0].innerHTML);
+		function check()
+		{
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+			{
+				oTab.tBodies[0].rows[i].onmouseover=function()
+				{
+					oldColor=this.style.background;
+					this.style.background="blue";
+				}
+				oTab.tBodies[0].rows[i].onmouseout=function()
+				{
+					this.style.background=oldColor;
+				}
+				if(i%2==0 && oTab.tBodies[0].rows[i].style.background!="yellow")
+				{
+					oTab.tBodies[0].rows[i].style.background="#ccc";
+				}
+				else if(oTab.tBodies[0].rows[i].style.background!="yellow")
+				{
+					oTab.tBodies[0].rows[i].style.background="";
+				}
+			}
+		}
+		check();
+		btn.onclick=function()
+		{
+			var oTr=document.createElement('tr');
+			oTr.appendChild(document.createElement('td'));
+			oTr.appendChild(document.createElement('td'));
+			oTr.appendChild(document.createElement('td'));
+			oTr.appendChild(document.createElement('td'));
+			//alert(oTab.tBodies[0].rows.length-1);
+			oTr.children[0].innerHTML=num++;			
+			oTr.children[1].innerHTML=name.value;
+			oTr.children[2].innerHTML=age.value;
+			oTr.children[3].innerHTML='<a href="javascript:;">delete</a>';
+			oTab.tBodies[0].appendChild(oTr);
+			oTr.children[3].children[0].onclick=function()
+			{
+				oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				check();
+			}
+			check();
+		}
+	}
+</script>
+</head>
+<body>
+Name：<input type="text" id="name">
+Age ：<input type="text" id="age">
+<input id="btn1" type="button" value="Add"><br>
+&nbsp&nbsp&nbspNAME:<input id="stxt" type="text" style="margin:20px;">
+<input type="button" value="search" id="sbtn">
+<table id="tab1" border="solid black 1px" width="500px">
+	<thead>
+		<td> ID</td>
+		<td> NAME</td>
+		<td> AGE</td>
+		<td> OPERATION</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Claire</td>
+			<td>21</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Tom</td>
+			<td>22</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Jerry</td>
+			<td>23</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Riddles</td>
+			<td>24</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Johnson</td>
+			<td>25</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

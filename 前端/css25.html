@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	table{
+		width:100%;
+		border-collapse: collapse;
+		font-size: 14px;
+		table-layout: fixed;
+
+	}
+	th,td{
+		border:1px solid #666;
+		padding:1em;
+	}
+	tr > th{
+		width:8em;
+	}
+	/*
+	display:table;   table
+	display:table-cell;		td th
+	display:table-row;  	tr
+	display:table-column;  col
+	display:table-column-group;  colgroup
+	display:table-footer-group;   tfoot
+	display:table-header-group;   thead
+
+
+
+
+
+	*/
+</style>
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>browser</th>
+			<th>JavaScript render</th>
+			<th>CSS render</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>Chrome</th>
+			<td>V8</td>
+			<td>Blink</td>
+		</tr>
+		<tr>
+			<th>FireFox</th>
+			<td>spiderMonkey</td>
+			<td>Gecko</td>
+		</tr>
+		<tr>
+			<th>Edge</th>
+			<td>ChakraCore</td>
+			<td>EdgeHTML</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

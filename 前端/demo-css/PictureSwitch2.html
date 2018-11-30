@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>PictureSwitch</title>
+    <style>
+        .img-box{
+            width: 560px;
+            height: 350px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .img-box img{
+            position: absolute;
+            width: 560px;
+            height: 350px;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 1;
+            display: block;
+        }
+        .btn-box{
+            width: 420px;
+            height: auto;
+            margin: 30px auto;
+        }
+        .btn-box button{
+            width: 100px;
+            height: 40px;
+            border: 1px solid #89cbdb;
+            background-color: #eee;
+            border-radius: 5px;
+            font-size: 28px;
+            margin: 0 15px;
+            color: #4c8bf5;
+            outline: none;
+        }
+        .btn-box button:hover{
+            background-color: #ddd;
+            color: #3070e0;
+        }
+    </style>
+</head>
+<body>
+<div class="img-box">
+    <img class="GN" src="images/GN.png">
+    <img class="SSM" src="images/SSM.png">
+    <img class="ZL" src="images/ZL.png">
+</div>
+<div class="btn-box">
+    <button id="GN">盖聂</button>
+    <button id="SSM">少司命</button>
+    <button id="ZL">张良</button>
+</div>
+</body>
+</html>

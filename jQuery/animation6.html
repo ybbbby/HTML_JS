@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	#box{
+		width:100px;
+		height: 100px;
+		background: red;
+	}
+	#box1{
+		width:100px;
+		height: 100px;
+		background: blue;
+	}
+</style>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	//$.fx.off=true;      关闭动画
+	$('#box').slideToggle('slow',arguments.callee);
+	$('.button1').click(function(){
+		$(':animated').stop().css('background:color','green');
+	})
+})
+</script>
+</head>
+<body>
+<input type="button" class="button" value="gogo"></input>
+<input type="button" class="button1" value="gogo1"></input>
+<input type="button" class="button2" value="gogo2"></input>
+<div id="box">
+	box
+</div>
+<div id="box1">
+	box
+</div>
+</body>
+</html>

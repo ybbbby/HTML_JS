@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#ul1{
+			background:yellow;
+			list-style: none;
+		}
+		#ul2{
+			background:green;
+			list-style: none;
+		}
+	</style>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var oUl1=document.getElementById('ul1');
+		var oUl2=document.getElementById('ul2');
+		var btn=document.getElementById('btn');
+		btn.onclick=function()
+		{
+			var temp=oUl1.children[0];
+			if(temp)
+			{
+				//oUl1.removeChild(temp);
+				//oUl2.appendChild(temp); //本身appendChild就会从原来父级删除再转移！
+				oUl1.appendChild(temp);
+			}
+
+		}
+	}
+</script>
+</head>
+<body>
+<ul id="ul1">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+</ul>
+<input type="button" value="move" id="btn">
+<ul id="ul2">	
+</ul>
+</body>
+</html>

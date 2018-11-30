@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+#div1{
+	width:100px;
+	height: 150px;
+	background: red;
+	position:absolute;
+	right:0;
+	bottom:10px;
+}
+</style>
+<script type="text/javascript">
+	window.onscroll=function()
+	{
+		var oDiv=document.getElementById('div1');
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		startMove(document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop);
+		//oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+
+	}
+	var timer=null;
+
+	function startMove(iTarget)
+	{
+		iTarget=Math.ceil(iTarget);
+		var oDiv=document.getElementById('div1');
+		clearInterval(timer);
+		timer=setInterval(function()
+		{
+			var speed=(iTarget-oDiv.offsetTop)/8;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+			if(oDiv.offsetTop==iTarget)
+			{
+				clearInterval(timer);
+			}
+			else
+			{
+				oDiv.style.top=oDiv.offsetTop+speed+'px';
+			}
+
+		},30);
+	}
+</script>
+<body style="height:2000px;">
+<div id="div1"></div>
+</body>
+</html>

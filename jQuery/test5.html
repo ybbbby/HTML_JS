@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$(".123,p,strong").css('color','red');   //组选择器，可以选择多组
+
+
+
+	$('ul a').css('color','red');            //后代选择器，可以选择后代
+
+
+	$('*').css('font-weight','bold');        //匹配所有元素标签 在全局范围使用*会选中所有标签，非常浪费
+	alert($('ul li *').length);
+	$("ul li *").css('color','green');
+	$(".1.2").css('color','#ccc');            //同时匹配两个类，这两个类之间不能有空格
+	//两个条件之间不加空格，即可直接匹配同时符合两个条件的标签
+
+	//匹配的时候条件越少越好，这样速度更快
+})
+</script>
+</head>
+<body>
+<div class="123">
+123
+<p>123.pp</p>
+</div>
+<div class="123">123</div>
+<div class="123">123</div>
+
+<p>p</p>
+<p>p</p>
+<p>p</p>
+
+<strong>strong</strong>
+<strong>strong</strong>
+<strong>strong</strong>
+
+<ul>
+	<li><a href="javascript:;">index</a></li>
+	<li><a href="javascript:;">index</a></li>
+	<li><a href="javascript:;">index</a></li>
+	<li><strong>index</strong></li>
+	<li><em>index</em></li>
+</ul>
+
+<a href="javascript:;">index</a>
+<a href="javascript:;">index</a>
+
+<p class="1 2">p</p>
+<p class="1">p</p>
+<p class="2">p</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+var json={
+	a:12,
+	b:5,
+	c:'abc',
+	d:function()
+	{
+		alert(this.a);
+	}
+};
+json.d();
+
+function A()
+{
+	this.abc=12;
+}
+A.prototype.show=function()
+{
+	alert(this.abc);
+}
+function B()
+{
+	A.call(this);
+}
+//call只复制了其中的属性，没有复制方法
+
+
+for(var i in A.prototype)
+{
+	B.prototype[i]=A.prototype[i];
+}
+/*
+B.prototype.show=function()
+{
+	alert('aaasd');
+}
+*/
+var asd=new A;
+asd.show();
+var ss=new B;
+ss.show();
+</script>
+</head>
+<body>
+
+</body>
+</html>

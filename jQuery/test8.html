@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+
+$(function()
+{
+	$('li:first').css('background','#ccc');
+	$('li').first().css('background','#ccc');
+
+	$('#ul1 li:last').css('background','#ccc');
+	$('#ul1 li').last().css('background','#ccc');
+
+	$("ul:first li:last").css('background',"#111");
+
+	$('li:not(.red)').css('color','red');//class不是red
+	$('li').not('.red').css('color','red');
+
+	$('li:even').css('color','blue'); //还有 $('li:odd')
+
+	$('li:eq(7)').css('color','green');//匹配索引为7的标签
+	$('li').eq(7).css('color','green');
+
+	$('li:gt(8)').css('color','brown');//匹配索引值大于8 greater than    还有$('li:lt(2)')
+
+	$(':header').css('background','#555');//匹配标题
+
+
+	$('input').get(0).focus();
+
+
+	$(':focus').css('background','red');//初始化过程中就激活的元素才会起效果
+
+	$('ul :contains("4")').css('color','purple');//匹配标签之中包含文本内容‘4’的标签  WARNING:所有后代节点文本中含有‘4’的标签都会被选中，桌椅需要仔细选择范围使用contains
+
+	$('div:empty').css('background','blue').css('height','20px');//不能包含子元素，也不能包含空格等空元素
+
+	$('ul:has(.red)').css('color','green');//注意：！！如果子元素中的标签中含有red类的话，父元素就会被匹配
+	$('ul').has('.red').css('color','green');
+
+	$('ul:parent').css('background','#ccc');//如果有拥有子元素的ul节点，该节点就会被匹配，这里就会匹配ul
+
+	$('ul').parent();//这里返回的是ul的父节点而不是拥有父元素的ul，所以不同上
+	$('ul').parents().css('color','red');//这里返回的是ul的所有祖先节点所以不同上,可以给parents添加参数从而进行选择
+	$('li').parentsUntil('body').css('border-bottom','1px');//在祖先节点中往上匹配，直到匹配到body之后就不匹配，同时body也不进行匹配
+
+	$('div:hidden').show(1000);//选取一开始是隐藏的div元素
+	$('div:visible').hide(1000);//选取一开始是显示的div元素
+
+
+});
+
+</script>
+</head>
+<body>
+<ul id="ul1">
+	<li>list1</li>
+	<li class="red">list2</li>
+	<li>list3</li>
+	<li>list4</li>
+	<li>list5</li>
+	<li>list6</li>
+	<li>list7</li>
+</ul>
+<ul id="ul2">
+	<li>list1</li>
+	<li>list2</li>
+	<li>list3</li>
+	<li>list4</li>
+	<li>list5</li>
+	<li>list6</li>
+</ul>
+<h1>I am Head</h1>
+
+<div></div>
+<div></div>
+
+<input type="text" name="">
+
+<div style="display: none;">divhidden</div>
+
+</body>
+</html>

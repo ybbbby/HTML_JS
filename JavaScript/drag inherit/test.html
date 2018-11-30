@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#div1{
+	width:200px;
+	height:200px;
+	background: yellow;
+	position:absolute;
+}
+#div2{
+	width:200px;
+	height:200px;
+	background: green;
+	position:absolute;
+}
+</style>
+<script src="drag.js"></script>
+<script src="limitdrag.js"></script>
+<script type="text/javascript">
+window.onload=function()
+{
+	var o1=new Drag('div1');
+	var o2=new LimitDrag('div2');
+}
+</script>
+</head>
+<body>
+<div id="div1">normal</div>
+<div id="div2">limit</div>
+</body>
+</html>

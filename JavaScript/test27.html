@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+window.onload=function()
+{
+	document.onclick=function(ev)
+	{
+		//IE
+		//alert(event.clientX+","+event.clientY);
+
+		//FF
+		//alert(ev.clientX+","+ev.clientY);
+
+		oEvent=ev||event;
+		alert(oEvent.clientX+","+oEvent.clientY);
+
+
+	}
+	document.onkeydown=function(ev)
+	{
+		oEvent=ev||event;
+		alert(oEvent.keyCode);
+	}
+	alert(document.children[0].tagName);
+}
+</script>
+</head>
+<body>
+<input type="button" value="aaa">
+</body>
+</html>

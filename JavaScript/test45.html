@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+//factory style   It's really a waste of memory space!!!!!
+function Person(name,qq)
+{
+	//browser would do the same thing as the covered code
+	//this= new Object();
+
+	this.name=name;
+	this.qq=qq;
+
+	Person.prototype.showName=function()
+	{
+		alert('my name:'+this.name);
+	};
+	Person.prototype.showQQ=function()
+	{
+		alert('my qq:'+this.qq);
+	};
+	//browser would do the same thing as the covered code
+	//return this;
+}
+//any 
+var obj=new Person('asd','123123');
+var obj2=new Person('asd','123123');
+
+var arr1=new Array(12,123,12,234);
+var arr2=new Array(2,3,4,5);
+Array.prototype.sum=function()
+{
+	var result=0;
+	for(var i=0;i<this.length;i++)
+	{
+		result+=this[i];
+	}
+	return result;
+}
+obj.showQQ();
+alert(arr2.sum());
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#div1{
+	width:100px;
+	height:100px;
+	background: red;
+	position: absolute;
+}
+</style>
+<script type="text/javascript">
+var timer1=null;
+var timer2=null;
+var timer3=null;
+var timer4=null;
+	document.onkeydown=function(ev)
+	{
+		var oEvent=ev||event;
+		var oDiv=document.getElementById('div1');
+		
+
+		if(oEvent.keyCode==37||oEvent.keyCode==65)
+		{
+			clearInterval(timer1);
+			clearInterval(timer2);
+			clearInterval(timer3);
+			clearInterval(timer4);
+			timer1=setInterval(function(){
+				oDiv.style.left=oDiv.offsetLeft-10+'px';
+			},30);
+		}
+		else if(oEvent.keyCode==39||oEvent.keyCode==68)
+		{
+			clearInterval(timer1);
+			clearInterval(timer2);
+			clearInterval(timer3);
+			clearInterval(timer4);
+			timer2=setInterval(function(){
+				oDiv.style.left=oDiv.offsetLeft+10+'px';
+			},30);
+		}
+		else if(oEvent.keyCode==38||oEvent.keyCode==87)
+		{
+			clearInterval(timer1);
+			clearInterval(timer2);
+			clearInterval(timer3);
+			clearInterval(timer4);
+			timer3=setInterval(function(){
+				oDiv.style.top=oDiv.offsetTop-10+'px';
+			},30);
+		}
+		else if(oEvent.keyCode==40||oEvent.keyCode==83)
+		{
+			clearInterval(timer1);
+			clearInterval(timer2);
+			clearInterval(timer3);
+			clearInterval(timer4);
+			timer4=setInterval(function(){
+				oDiv.style.top=oDiv.offsetTop+10+'px';
+			},30);
+		}
+	}
+	document.onkeyup=function(ev)
+	{
+		var oEvent=ev||event;
+		if(oEvent.keyCode==37||oEvent.keyCode==65)
+		{
+			clearInterval(timer1);
+		}
+		else if(oEvent.keyCode==39||oEvent.keyCode==68)
+		{
+			clearInterval(timer2);
+		}
+		else if(oEvent.keyCode==38||oEvent.keyCode==87)
+		{
+			clearInterval(timer3);
+		}
+		else if(oEvent.keyCode==40||oEvent.keyCode==83)
+		{
+			clearInterval(timer4);
+		}
+		
+	}
+</script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

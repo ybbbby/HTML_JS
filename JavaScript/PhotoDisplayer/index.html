@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="move.js"></script>
+<link rel="stylesheet" type="text/css" href="imagesshower.css">
+<script type="text/javascript">
+window.onload=function()
+{
+	var oDiv=document.getElementById('playimages');
+	var oBtnPrev=document.getElementsByClassName('prev')[0];
+	var oBtnNext=document.getElementsByClassName('next')[0];
+	var oMarkLeft=document.getElementsByClassName('mark_left')[0];
+	var oMarkRight=document.getElementsByClassName('mark_right')[0];
+
+	var oDivSmall=document.getElementsByClassName('small_pic')[0];
+	var oUlSmall=oDivSmall.getElementsByTagName('ul')[0];
+	var aLiSmall=oDivSmall.getElementsByTagName('li');
+
+	var oUlBig=oDiv.children[0];
+	var aLiBig=oUlBig.getElementsByTagName('li');
+//prev next show
+	oBtnPrev.onmouseover=oMarkLeft.onmouseover=function()
+	{
+		startMove(oBtnPrev,100,"opacity")
+	}
+	oMarkLeft.onmouseout=function()
+	{
+		startMove(oBtnPrev,0,"opacity")
+	}	
+	oBtnNext.onmouseover=oMarkRight.onmouseover=function()
+	{
+		startMove(oBtnNext,100,"opacity")
+	}
+	oMarkRight.onmouseout=function()
+	{
+		startMove(oBtnNext,0,"opacity")
+	}
+	oUlSmall.style.width=aLiSmall.length*aLiSmall[0].offsetWidth+"px";
+	oUlSmall.style.left=-aLiSmall[0].offsetWidth+"px";
+//control big through small
+	var nowIndex=1;
+	var nowBig=2;
+	for(var i=0;i<aLiSmall.length;i++)
+	{
+		aLiSmall[i].index=i;
+		aLiSmall[i].onclick=function()
+		{
+			if(this.index==nowBig)
+				return;
+			var iNumber=this.index-nowBig;
+			if(iNumber>2)
+				iNumber-=aLiSmall.length;
+			else if(iNumber<-2)
+				iNumber+=aLiSmall.length;
+			nowBig=this.index;
+			alldim();
+			tabBig();
+			smallSlide(iNumber);
+
+		}
+		aLiSmall[i].onmouseover=function()
+		{
+			startMove(this,100,"opacity");
+		}
+		aLiSmall[i].onmouseout=function()
+		{
+			if(this.index==nowBig)
+				return;
+			startMove(this,60,"opacity");
+		}
+	}
+
+//prev next go
+	oBtnPrev.onclick=function()
+	{
+		nowBig--;
+		if(nowBig==-1)
+			nowBig=aLiBig.length-1;
+		alldim();
+		tabBig();
+
+		smallSlide(-1);
+
+	}
+
+	oBtnNext.onclick=function()
+	{
+		alldim();
+		nowBig++;
+		if(nowBig==aLiBig.length)
+			nowBig=0;
+		tabBig();
+		smallSlide(1);
+
+	}
+
+	function alldim()
+	{
+		for(var i=0;i<aLiSmall.length;i++)
+		{
+			startMove(aLiSmall[i],60,"opacity");	
+		}
+	}
+	function tabBig()
+	{
+
+		aLiBig[nowBig].style.zIndex=nowIndex;
+		nowIndex++;
+		aLiBig[nowBig].style.height=0;
+		startMove(aLiBig[nowBig],320,'height');
+	}
+
+	function smallSlide(iNumber)
+	{
+		for(var i=0;i<Math.abs(iNumber);i++)
+		{
+			if(iNumber>0)
+			{
+				oUlSmall.appendChild(aLiSmall[0]);
+				oUlSmall.style.left=oUlSmall.offsetLeft+aLiSmall[0].offsetWidth+"px";
+			}
+			else
+			{
+				oUlSmall.insertBefore(aLiSmall[aLiSmall.length-1],aLiSmall[0]);
+
+				oUlSmall.style.left=oUlSmall.offsetLeft-aLiSmall[0].offsetWidth+"px";
+			}
+		}
+		startMove(oUlSmall,-aLiSmall[0].offsetWidth,'left');
+		startMove(aLiSmall[2],100,"opacity");
+	}
+	var timer=setInterval(oBtnNext.onclick,1000);
+	oDiv.onmouseover=function()
+	{
+		clearInterval(timer);
+	}
+	oDiv.onmouseout=function()
+	{
+		timer=setInterval(oBtnNext.onclick,1000);
+	}
+
+
+}
+</script>
+</head>
+<body>
+<div id="playimages" class="play">
+	<ul class="big_pic">
+		<div class="prev"></div>
+		<div class="next"></div>
+
+		<div class="text">Discription</div>
+		<div class="length">PictureNumber</div>
+
+		<a class="mark_left" href="javascript:;"></a>
+		<a class="mark_right" href="javascript:;"></a>
+		<div class="bg"></div>
+		
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li style="z-index:1;"><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+	</ul>
+	<div class="small_pic">
+		<ul style="width:390px;">
+            <li><img src="images/1.jpg" /></li>
+            <li><img src="images/2.jpg" /></li>
+            <li><img src="images/3.jpg" /></li>
+            <li><img src="images/4.jpg" /></li>
+            <li><img src="images/5.jpg" /></li>
+            <li><img src="images/6.jpg" /></li>
+
+        </ul>
+	</div>
+</div>
+</body>
+</html>

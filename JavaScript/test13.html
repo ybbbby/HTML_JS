@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1{width:200px;height:200px;background:#ccc;position:absolute;margin:100px;}
+		#div2{width:100px;height:100px;background:red; position: absolute;
+			left:50px;top:50px;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div2');
+			alert(oDiv.offsetParent);
+		}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<div id="div2">
+		<div id="div3">
+			
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

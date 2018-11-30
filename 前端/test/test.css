@@ -1,0 +1,19 @@
+body{
+	background-color: #faf2e4;
+	margin:0 15%;
+	font-family: sans-serif;
+}
+img{
+	display: block;
+	margin:0 auto;
+}
+h1{
+	text-align: center;
+	font-family: serif;
+	font-weight: normal;/* 100 200 bold lighter bolder initial normal*/
+	border-bottom:1px solid #57b1dc;
+}
+h2{
+	color:#d1633c;
+	font-size: 2em;/*相对文本的倍数*/
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#div1 input{
+	background: white;
+}
+#div1 input.active{
+	background:yellow;
+}
+#div1 div{
+	width:200px;
+	height:200px;
+	background: #ccc;
+	display: none;
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var tab=new TabSwitch('div1');
+}
+function TabSwitch(id)
+{
+	var _this=this;
+	var oDiv=document.getElementById(id);
+	this.aBtn=oDiv.getElementsByTagName('input');
+	this.aDiv=oDiv.getElementsByTagName('div');
+
+	for(var i=0;i<this.aBtn.length;i++)
+	{
+		this.aBtn[i].index=i;
+		this.aBtn[i].onclick=function()
+		{
+			_this.fnClick(this);
+		}
+	}
+}
+TabSwitch.prototype.fnClick=function(obj)
+{
+	for(var i=0;i<this.aBtn.length;i++)
+	{
+		this.aBtn[i].className='';
+		this.aDiv[i].style.display="none";
+	}
+	obj.className='active';
+	this.aDiv[obj.index].style.display='block';
+}
+</script>
+</head>
+<body>
+<div id='div1'>
+<input type="button" value="aaa" class="active">
+<input type="button" value="bbb">
+<input type="button" value="ccc">
+<div style="display:block;">aaa</div>
+<div>aserg</div>
+<div>sdfyugl</div>
+</div>
+</body>
+</html>

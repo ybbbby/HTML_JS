@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('a[title]').css('color','red'); //nodes which has attribution of 'title' would become red
+
+	$('a[title=num-1]').css('color','red'); //nodes whose title attribution is 'num-1' would become red
+
+	$('a[title^=nu]').css('color','red'); //nodes whose title attribution is initial with 'nu' would become red;
+
+	$('a[title$=m5]').css('color','blue'); //nodes whose title attribution is end with 'm5' would become blue;
+
+	$('a[title|=num]').css('color','yellow');//nodes whose title attribution include 'num-' would become yellow
+
+	$('a[title!=num5]').css('color','purple');//nodes whose title attribution is not include 'num5' would become purple
+
+	$('a[title*=num]').css('color','brown');//nodes whose title attribution is include 'num'would become brown
+
+	$('a[abc][title]').css('color','yellow');//nodes which has both the title attribution and the abc attribution would become yellow
+
+	$('a[title~=qqq]').css('color','#ccc');//NEED RESEARCH IN BAIDU
+	//it seem like all the node whose title INCLUDE qqq will be select
+});
+</script>
+</head>
+<body>
+<a title="num-1">num1</a>
+<a>num2</a>
+<a>num3</a>
+<a>num4</a>
+<a title="num5" abc="asd">num5</a>
+</body>
+</html>

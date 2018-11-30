@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+#div1{
+	width:100px;
+	height: 150px;
+	background: red;
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+
+	var oDiv=document.getElementById('div1');
+	if(window.navigator.userAgent.indexOf("IE6") <= 0 )
+	{
+		oDiv.style.position="fixed";
+	} 
+	else
+	{
+		window.onscroll=function()
+		{
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+			//oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+		}
+		window.onresize=function()
+		{
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+		}
+	}
+	
+}
+</script>
+<body style="height:2000px;">
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<!ELEMENT asd (a+,q?,d*)> ?means zero or one,   *means zero or many times (include one)
+	<!ELEMENT a (s,d,k)> //FOCUS ON THE SEQUENCE
+	<!ELEMENT q (s|d|k)> //choose one 
+	<!ELEMENT s (#PCDATA)> //PCDATA 字符串 
+	<!ELEMENT d (#ANY)>
+	<!ELEMENT k (#EMPTY)>

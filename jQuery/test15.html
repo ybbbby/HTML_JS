@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	//offset 是指离视口的位置，不在乎器父元素
+	alert($('div').offset().left);
+	alert($('div').offset().top);
+
+	//position 是指离父元素的位置，不在乎器父元素
+	alert($('div').position().top);
+
+	//滚动条的距离
+	alert($(window).scrollTop());
+
+	//设置滚动条
+	$(window).scrollTop(200);
+
+	//还有$(window).scrollLeft()表示水平的滚动条，但用的比较少
+})
+</script>
+</head>
+<body style="height:2000px;">
+<span style="margin:20px; position:relative">
+<div style="position:relative;margin:20px">asdluypaoudfpona[</div>
+</span>
+</body>
+</html>

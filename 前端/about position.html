@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<pre>
+有三种布局：1. 行布局（默认布局方式）；2. 列布局（使用float）；3. 定位布局（使用position）
+ 
+在定位布局中，需要搞清楚两个问题：1. 目标；2. 参照物。
+ 
+当使用绝对定位时，必须指定参照物，然后进行定位；
+而成为参照物的条件是：1. 是目标元素的父元素或祖先元素；2. position属性的值不能为static（默认值）。
+ 
+成为参照物的元素，其position属性值可以是 absolute、relative、fixed；
+其中relative是最常见的，
+因为将元素的position属性设置为relative，
+不会使该元素从标准的文档流脱离出来（也就是没什么影响）。
+ </pre>
+</body>
+</html>

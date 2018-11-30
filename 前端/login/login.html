@@ -1,0 +1,110 @@
+<!DOCTYPE htm[l>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+	}
+	body{
+		background-image:url('bg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;    /*background-size: 100%;就不会使比例发生变化，图片大小发生变化，而cover不会使图片比例和大小发生变化所以有的时候看不全图片*/
+
+	}
+
+	.login-box{
+		width:400px;
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+		background-color: rgba(255, 255, 255, .6);
+	}
+
+	.login-header{
+		text-align: center;
+		padding: 10px;
+		border-bottom: 3px solid #fff;
+	}
+
+	h2{
+		color:#3b5e88;
+	}
+	.login-body{
+		padding:20px;
+	}
+	.form-group{
+		width:100%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	label{
+		width:4em;
+		display:inline-block;
+		text-align: right;
+		margin-right: 1em;
+	}
+	input,select{
+		width:250px;
+		height:30px;
+		font-size:16px;
+		/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+		text-indent: 10px;
+		/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+		border: 1px solid #f3f3f3;
+		border-radius:4px;
+	}
+	button{
+		width: 337px;
+		height: 35px;
+		background-color:hsl(213,39%,39%);
+		border:none;
+		color:white;
+		font-size: 14px;
+		cursor:pointer;
+	}
+	button:hover{
+		background-color:hsl(213,39%,45%);
+	}
+</style>
+</head>
+<body>
+	<div class="login-box">
+		<div class="login-header">
+			<h2>登陆界面</h2>
+		</div>
+		<div class="login-body">
+			<form>
+			  <div class="form-group">
+			  	<label>用户名</label>
+			  	<input type="text" name= "username" placeholder="please write username">
+			  </div>
+			  <div class="form-group">
+			  	<label>密码</label>
+			  	<input type="password" name ="password" placeholder="please write password">
+			  </div>
+			  <div class="form-group">
+			  	<label for="school">学&nbsp&nbsp&nbsp&nbsp校</label>
+			  	<select name="school" id="school">
+			  		<option value="">--请选择学校--</option>
+			  		<option value="1">华中科技大学</option>
+			  		<option value="2">武汉大学</option>
+			  		<option value="3">武汉理工</option>
+			  		<option value="4">华中师范大学</option>
+			  	</select>
+			  </div>
+			  <div class="form-group">
+			  	<button type="submit">登录</button>
+			  </div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript" src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('button').bind('click',function(){
+		alert($('button').text());
+	})
+
+	$('input').bind('myEvent',function(){
+		alert('self set thing!');
+	});
+	$('input').trigger('myEvent');
+	$('h1').bind('click.abc',function(){
+		alert('abc');
+	})
+	$('h1').bind('click.abc',function(){
+		alert('abc');
+	})
+	
+})
+</script>
+</head>
+<body>
+<button>gogogo</button>
+<input type="text" name="">
+<h1>h1</h1>
+</body>
+</html>

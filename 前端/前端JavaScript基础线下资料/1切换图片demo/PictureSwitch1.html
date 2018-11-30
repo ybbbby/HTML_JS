@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PictureSwitch</title>
+    <style>
+        .img-box{
+            width: 560px;
+            height: 350px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .img-box img{
+            position: absolute;
+            width: 560px;
+            height: 350px;
+            top: 0;
+            left: 0;
+        }
+        .btn-box{
+            width: 420px;
+            height: auto;
+            margin: 30px auto;
+        }
+        .btn-box button{
+            width: 100px;
+            height: 40px;
+            border: 1px solid #89cbdb;
+            background-color: #eee;
+            border-radius: 5px;
+            font-size: 28px;
+            margin: 0 15px;
+            color: #4c8bf5;
+            outline: none;
+        }
+        .btn-box button:hover{
+            background-color: #ddd;
+            color: #3070e0;
+        }
+    </style>
+</head>
+<body>
+<div class="img-box">
+    <img id="img" src="images/SSM.png">
+</div>
+<div class="btn-box">
+    <button id="GN">盖聂</button>
+    <button id="SSM">少司命</button>
+    <button id="ZL">张良</button>
+</div>
+
+<!--最直接的方法-->
+<script>
+    var btn1=document.getElementById("GN");
+    var btn2=document.getElementById("SSM");
+    var btn3=document.getElementById("ZL");
+    var img=document.getElementById("img");
+
+    btn1.onclick=function(){
+        img.setAttribute("src","images/GN.png");
+    }
+    btn2.onclick=function(){
+        img.setAttribute("src","images/SSM.png");
+    }
+    btn3.onclick=function(){
+        img.setAttribute("src","images/ZL.png");
+    }
+</script>
+
+<!--自定义函数，id与图片命名一样（若不一样需要加判断）-->
+<!--<script>-->
+    <!--var btn1=document.getElementById("GN");-->
+    <!--var btn2=document.getElementById("SSM");-->
+    <!--var btn3=document.getElementById("ZL");-->
+    <!--var img=document.getElementById("img");-->
+
+    <!--function SwitchPicture(id){-->
+        <!--img.setAttribute("src","images/"+id+".png");-->
+    <!--}-->
+
+    <!--btn1.onclick=function(){-->
+        <!--SwitchPicture("GN");-->
+    <!--}-->
+    <!--btn2.onclick=function(){-->
+        <!--SwitchPicture("SSM");-->
+    <!--}-->
+    <!--btn3.onclick=function(){-->
+        <!--SwitchPicture("ZL");-->
+    <!--}-->
+<!--</script>-->
+
+<!--获取按钮组-->
+<!--<script>-->
+    <!--var btns=document.getElementsByTagName("button");-->
+    <!--var img=document.getElementById("img");-->
+
+    <!--function SwitchPicture(id){-->
+        <!--img.setAttribute("src","images/"+id+".png");-->
+    <!--}-->
+
+    <!--btns[0].onclick=function(){-->
+    <!--SwitchPicture("GN");-->
+    <!--}-->
+    <!--btns[1].onclick=function(){-->
+    <!--SwitchPicture("SSM");-->
+    <!--}-->
+    <!--btns[2].onclick=function(){-->
+    <!--SwitchPicture("ZL");-->
+    <!--}-->
+<!--</script>-->
+
+<!--利用for循环定义事件，注意this的使用-->
+<!--<script>-->
+    <!--var btns=document.getElementsByTagName("button");-->
+    <!--var img=document.getElementById("img");-->
+
+    <!--function SwitchPicture(id){-->
+        <!--img.setAttribute("src","images/"+id+".png");-->
+    <!--}-->
+
+    <!--for(var i=0;i<btns.length;i++){-->
+        <!--btns[i].onclick=function(){-->
+            <!--var id=this.id;-->
+            <!--SwitchPicture(id);-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+</body>
+</html>

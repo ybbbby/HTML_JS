@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('div').click(function(){
+		alert('asd');
+	})
+
+	$('div').clone().appendTo('body');//直接clone(false)或者clone()不会带有事件
+	$('div').clone(true).appendTo('body');
+
+	$('div').eq(2).attr('class','asd');
+	var asd=$('div').remove('.asd');//remove返回一个节点，虽然和删除的一样但是不附带事件了
+	//注意，这里返回的是第一个$('div')中被选中的元素，而不是remove中选择器选中的节点
+
+	$('div').eq(0).attr('class','sdf');
+	$('.sdf').detach().appendTo('body');//detach返回一个节点，和删除的一样,附带事件了
+
+
+	$('div').eq(0).attr('class','ddd');
+	$('.ddd').empty();
+	$('div').replaceWith('aaa<span></span>');
+	$('<asjdhal>').replaceAll('span');
+})
+</script>
+</head>
+<body>
+<div>I am Div</div>
+</body>
+</html>

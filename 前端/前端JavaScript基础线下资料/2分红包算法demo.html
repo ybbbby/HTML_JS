@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分红包</title>
+	</head>
+	<body style="">		
+		<div class="container" >
+			<div>
+				<label>红包总额:<input type="number" id="sum" /></label>
+			</div>
+			<div>
+				<label>瓜分人数:<input type="number" id="num" /></label>
+			</div>
+			<div>
+				<button type="button" id="btn">塞钱</button>
+			</div>
+			<div class="result">
+				<ul id="ul"></ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			/********************  分红包算法  *********************/ 
+			var btn = document.getElementById('btn');
+			btn.addEventListener('click', function() {
+				var ul = document.getElementById('ul');
+
+				var money = document.getElementById('sum').value;
+				money = parseFloat(money);
+				var num = document.getElementById('num').value;				
+				num = parseInt(num);
+				ul.innerHTML = '';
+				// 验证输入
+				if(money / num < 0.01) {
+					alert('太小气，红包不够分！');
+					return;
+				}
+				addLiNode(ul,redPackage(money,num));				
+			});
+
+			function redPackage(money, num) {
+				var ret = [];
+				// 只发给一个人的情况
+				if(num === 1) {
+					return [money];
+				}
+				money = money * 100;				
+				// 处理0值
+				var sum = money - num * 1;				
+
+				var random = 0;
+
+				for(var i = 0; i < num - 1; i++) {
+					// 产生0到99随机整数
+					random = Math.floor(Math.random() * 100);
+					// 将红包拆成两份
+					random = Math.floor((sum * random) / 100);
+					var temp = [random, sum - random];
+					ret.push(temp[0]);
+					ret.push(temp[1]);
+					// 提前结束最后一次拆分
+					if(i === num - 2){
+						break;
+					}
+					ret = ret.sort(function(a,b){
+						return a - b;
+					});
+					sum = ret[ret.length - 1];
+					ret = ret.slice(0, -1);			 
+				}
+
+				ret = ret.map(function(item) {
+					return (item + 1 ) / 100;
+				});
+
+				return ret;
+			}
+
+			function addLiNode(parentEl,textArr) {
+				for(var i = 0, len = textArr.length; i < len; i++) {
+					var li = document.createElement('li');
+					li.innerHTML = '<li>' + textArr[i] + '</li>';
+					parentEl.appendChild(li);
+				}
+			}
+
+		</script>
+	</body>
+
+</html>

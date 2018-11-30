@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#div1{
+		width:200px;
+		height:200px;
+		background:red;
+	}
+	</style>
+	<script type="text/javascript">
+	function getStyle(obj,name)
+	{
+		if(getComputedStyle(obj,null))
+		{
+			//crome,FF
+			return getComputedStyle(obj,null)[name];
+		}
+		else
+		{
+			//IE
+			return obj.currentStyle[name];
+		}
+
+	}
+		window.onload=function()
+		{
+			oDiv=document.getElementById('div1');
+			alert(getStyle(oDiv,'backgroundColor'));
+			var a=[1,2,3];
+			a.push(4);
+			a.pop();
+			a.unshift(0);
+			a.shift();
+			var b=a.concat(a);
+			a.splice(1,2,'a');
+			alert(b);
+			alert(a);
+			a.push(4);
+			alert(b);
+			b.length=0;
+			b=['brother','cost','apple','zoom','sister'];
+			alert('baa'>'aaas');
+			alert(b.sort(function(n1,n2)
+				{
+					if(n1<n2)
+						return -1;
+					else if(n1>n2)
+						return 1;
+					else
+						return 0;
+
+				}));
+		}
+	</script>
+</head>
+<body>
+<div id="div1" style="width:100px;height:100px;background:blue;"></div>
+</body>
+</html>

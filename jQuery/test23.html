@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('input').length;//2
+	$('input').val();//123
+	$('input').eq(1).val();//456
+
+	$('input[type=password]').val();//456
+	$('input[name=pass]').val();//456
+
+	$(':input').length;//7 选择了包含于form中的input,textarea select buttony元素
+
+	$(':text').length;//1 选择所有的单行文本框
+	$(':password').length;//1 选择所有的密码框
+
+	$(':radio').length;//2
+
+	$(':radio[name=sex]').last().val();//female
+
+	$(':hidden').length;// hide隐藏的元素包括html框架里的元素，所以需要按照以下的方式选择范围
+
+	$('form:hidden').length;//这才是我想要的
+
+	$('form :enabled').length;//6
+
+	$('form :disabled').length;//1
+
+	$('form :checked').length;//1单选或者复选，这里是单选
+
+	alert($('form :selected').length);//1
+});
+</script>
+</head>
+<body>
+<form>
+	<input type="text" name="user" value="123">
+	<input type="password" name="pass" value="456">
+	<textarea disabled="disabled" name="textarea">textarea</textarea>
+	<!--multiple将下拉菜单变成了下拉列表，这样可以防止默认选中第一个-->
+	<select name="select" multiple>
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	</select>
+	<button name="button">button</button>
+	<div>div</div>
+
+	<input type="radio" name="sex" value="male">male
+	<input type="radio" name="sex" value="female" checked="checked">female
+</form>
+</body>
+</html>

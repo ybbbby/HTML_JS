@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+	ul{
+		display: flex;
+		padding:0;
+		background: lightgrey;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		/*flex-start flex-end center space-between space-around 元素在主轴方向的摆放*/
+	}
+	li{
+		list-style:none;
+		padding:1em;
+		background: lightblue;
+		width:10%;
+		box-sizing: border-box;
+	}
+	.item-1{
+		flex-grow:0;
+		flex-shrink: 0;
+	}
+	.item-2{
+		background: lightgreen;
+		flex-grow:0;
+	}
+	.item-3{
+		background: lightcoral;
+		flex-grow:0;
+	}
+
+</style>
+</head>
+<body>
+<ul>
+	<li class="item-1">1</li>
+	<li class="item-2">2</li>
+	<li class="item-3">3</li>
+</ul>
+</body>
+</html>

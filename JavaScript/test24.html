@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+div{
+	background: red;
+	width:100px;
+	height:60px;
+	margin:10px;
+	border:10px solid black;
+	float:left;
+	font-size: 5px;
+	font-style:none;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+}
+</style>
+<script type="text/javascript">
+function getStyle(obj,name)
+{
+	if(name!="opacity")
+	{
+		if(obj.currentStyle)
+		{
+			return parseInt(obj.currentStyle[name]);
+		}
+		else
+		{
+			return parseInt(getComputedStyle(obj,null)[name]);
+		}
+	}	
+	else
+	{
+		if(obj.currentStyle)
+		{
+			return Math.round(parseFloat(obj.currentStyle[name])*100);
+		}
+		else
+		{
+			return Math.round(parseFloat(getComputedStyle(obj,null)[name])*100);
+		}
+	}
+}
+window.onload=function()
+{
+	var aDiv=document.getElementsByTagName('div');
+	aDiv[0].timer=null;
+	aDiv[0].onmouseover=function()
+	{
+		startMove(this,600,'height','timer');
+	}
+	aDiv[0].onmouseout=function()
+	{
+		startMove(this,60,'height','timer');
+	}
+	aDiv[1].timer=null;
+	aDiv[1].onmouseover=function()
+	{
+		startMove(this,600,'width','timer');
+	}
+	aDiv[1].onmouseout=function()
+	{
+		startMove(this,100,'width','timer');
+	}	
+	aDiv[2].timer=null;
+	aDiv[2].timer1=null;
+	aDiv[2].onmouseover=function()
+	{
+		aDiv[2].innerHTML="FUCK YOU";
+		startMove(this,20,'fontSize','timer');
+		startMove(this,100,'opacity','timer1');
+	}
+	aDiv[2].onmouseout=function()
+	{
+		aDiv[2].innerHTML="LOVE U";
+		startMove(this,5,'fontSize','timer');
+		startMove(this,30,'opacity','timer1');
+	}	
+	aDiv[3].timer=null;
+	aDiv[3].onmouseover=function()
+	{
+		startMove(this,100,'borderWidth','timer');
+	}
+	aDiv[3].onmouseout=function()
+	{
+		startMove(this,10,'borderWidth','timer');
+	}
+	aDiv[4].timer=null;
+	aDiv[4].onmouseover=function()
+	{
+		startMove(this,100,'opacity','timer');
+	}
+	aDiv[4].onmouseout=function()
+	{
+		startMove(this,30,'opacity','timer');
+	}
+	
+}
+function startMove(obj,iTarget,name,timer)
+{
+	clearInterval(obj[timer]);
+	obj[timer]=setInterval(function(){
+		var cur=getStyle(obj,name)
+		var speed=(iTarget-cur)/6;
+
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		
+		if(cur==iTarget)
+		{
+			clearInterval(obj[timer]);
+		}
+		else if(name=="opacity")
+		{
+			obj.style[name]=(cur+speed)/100;
+			obj.style.filter="alpha(opacity:"+cur+speed+")";
+		}
+		else
+		{
+			obj.style[name]=cur+speed+'px';
+		}
+	},30);
+}
+</script>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+/*css document*/
+body{
+	background: #fff;
+}
+input{
+	width:200px;
+	height:100px;
+	background: yellow;
+}
+#test {
+	width: 100px;
+	height: 200px;
+	background: gray;
+	display: block;
+}

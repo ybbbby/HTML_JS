@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript" src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('div').bind('click',function(e){
+		alert(e.target);//获取触发元素的DOM
+		alert(e.currentTarget);//获取监听元素的DOM
+	})
+	$('div').bind('mouseover',function(e){
+		alert(e.relatedTarget);
+	})
+})
+</script>
+</head>
+<body>
+<input type="button" value="button">
+<div style="width:200px; height:200px;background: #ccc;">
+	<span style="width:100px;height:100px;background: #eee; display:block"></span>
+</div>
+</body>
+</html>

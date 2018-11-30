@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('li:first-child').css('color','#ccc');//获取每个父元素的第一个子元素(且钙元素必须为li)
+	$('li:last-child').css('background','#ccc');
+	$('li:only-child').css('background','red');//获取只有一个子元素的父元素的子元素（即为其本身）
+
+	$('li:nth-child(2)').css('color','green');//索引方式，且是从1开始计算，且只获取为li的元素
+	//$('li:nth-child(even)');//偶数匹配，且只获取为li的元素
+	//$('li:nth-child(odd)');//技术匹配，且是从1开始计算，且只获取为li的元素
+
+
+	$('ul').eq(1).is('ul');//判断class，id，tag
+
+	alert($('.red').is(function(){
+
+		return $(this).attr('title')=='li2';
+	}));
+
+	alert($('li').eq(2).hasClass('red'));//hasClass不加'.'
+
+	$('li').slice(2,4).css('background','#ccc');//从2开始小于4
+	$('li').slice(2);//从第二个开始全部选定
+
+	$('div:last').contents()[0].data="asd";//可以选取非标签元素
+
+	$('li').filter('.red,:last-child').css('color','purple');
+
+
+	$('li').filter(function()
+	{
+		return $(this).attr('class')=='red' && $(this).attr('title')=='li2';
+	}).css('background','#a21')
+});
+</script>
+</head>
+<body>
+<ul id="ul1">
+	<span>span</span>
+	<li>li1</li>
+	<li class="red">li2</li>
+	<li class='red' title="li2">li3</li>
+	<li>li4</li>
+	<li>li5</li>
+	<li>li6</li>
+</ul>
+<ul id="ul2">
+	<li>li1</li>
+	<li>li2</li>
+	<li>li3</li>
+	<li>li4</li>
+	<li>li5</li>
+	<li>li6</li>
+</ul>
+<ul>
+	<li>li-alone</li>
+</ul>
+<div>
+	123
+	<strong>strong</strong>
+	234
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	#box{
+		width:100px;
+		height: 100px;
+		background: red;
+		position:absolute;
+	}
+	.teset{
+		padding:5px;
+		margin-right: 5px;
+		background:orange;
+		float:left;
+		display:none;
+	}
+</style>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.button').click(function(){
+		$('#box').animate({
+			left:'+=300px',
+			top:'200px'
+			},'slow',function(){
+			alert('finished');
+		})
+	})
+	$('.button1').click(function(){
+		$('#box').animate({width:'300px'}).animate({height:'200px'}).animate({opacity:0.5}).animate({fontSize:'50px'});
+	})
+	$('.button2').click(function(){
+		$('#box')
+			.slideUp('slow',function(){alert(count());$(this).clearQueue();})
+			.slideDown('slow')
+			.queue(function(){
+				$(this).css('background','orange');
+				$(this).dequeue();
+			})
+			.hide('slow');
+		});
+	function count(){
+		return $('#box').queue('fx').length;
+	}
+})
+</script>
+</head>
+<body>
+<input type="button" class="button" value="gogo"></input>
+<input type="button" class="button1" value="gogo1"></input>
+<input type="button" class="button2" value="gogo2"></input>
+<div id="box">
+	box
+</div>
+</body>
+</html>

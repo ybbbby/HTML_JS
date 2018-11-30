@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title></title>
+<style type="text/css">
+.box{
+	position:relative;
+	height:200px;
+	width:200px;
+	margin:20px 0 0 80px;
+}
+.box .leaf{
+	position:absolute;
+}
+.leaf{
+	margin-top:200px;
+	width:150px;
+	height:150px;
+	border-radius:150px 0px;
+	background:
+	linear-gradient(
+        45deg,
+        rgba(188,190,192,1) 8%,
+        rgba(158,31,99,1) 30%,
+        rgba(158,31,99,1) 100%
+		);
+	opacity:0.5;
+	transform:rotate(45deg);
+	transform-origin: top right;
+}
+.leaf:nth-child(2){
+	animation: show-2 5s ease-in-out infinite;
+}
+.leaf:nth-child(3){
+	animation: show-3 5s ease-in-out infinite;
+}
+.leaf:nth-child(4){
+	animation: show-4 5s ease-in-out infinite;
+}
+.leaf:nth-child(5){
+	animation: show-5 5s ease-in-out infinite;
+}
+.leaf:nth-child(6){
+	animation: show-6 5s ease-in-out infinite;
+}
+.leaf:nth-child(7){
+	animation: show-7 5s ease-in-out infinite;
+}
+.leaf:nth-child(8){
+	animation: show-8 5s ease-in-out infinite;
+}
+.box .leaf{
+	animation-fill-mode:both;
+}
+@keyframes show-2{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(71deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+
+}
+@keyframes show-3{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(96deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+@keyframes show-4{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(121deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+@keyframes show-5{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(146deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+@keyframes show-6{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(171deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+@keyframes show-7{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(196deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+@keyframes show-8{
+	0%{
+		transform:rotate(45deg);
+	}
+	50%{
+		transform:rotate(221deg);
+	}
+	100%{
+		transform:rotate(45deg);
+	}
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+	<div class="leaf"></div>
+</div>
+</body>
+</html>

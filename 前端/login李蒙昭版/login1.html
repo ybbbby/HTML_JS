@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style type="text/css">
+    html,
+    body{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    body{
+      background-image: url('167081-106.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .login__box{
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255,255,255,.6);
+    }
+    .login__header{
+      height: 50px;
+      text-align: center;
+      border-bottom: 3px solid #fff;
+    }
+    h2{
+      color: #3b5e88;
+    }
+    .login__body{
+      padding: 20px;
+    }
+    .form__group{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px; 
+    }
+    label{
+      display: inline-block;
+      margin-right: 1em;
+      width: 4em;
+    }
+    input,select{
+      width: 250px;
+      height: 30px;
+      border: 1px solid #f3f3f3;
+      border-radius: 4px;
+      font-size: 16px;
+      text-indent: 1em;
+    }
+
+    button{
+      width: 337px;
+      height: 35px;
+      background-color: hsl(213, 39%, 39%);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover,button:active,button:focus{
+      background-color: hsl(213, 39%, 42%)
+    }
+
+     small{
+      color: red;
+    }
+    .form__group.error input,
+      .form__group.error select{
+        border: red dotted 1px;
+      } 
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var form=document.getElementsByTagName('form')[0];
+      var username=document.getElementById('username');
+      var password=document.getElementById('password');
+      var school=document.getElementById('school');
+      var aerr1=document.getElementsByClassName('error');
+      form.addEventListener('submit',function(evt){
+
+        for(var a=0;a<aerr1.length;a++)
+        {
+          aerr1[a].style.display="none";
+        }
+        if(!username.value)
+        {
+          aerr1[0].style.display="block";
+          evt.preventDefault();
+        }
+        if(password.value.length<6)
+        {
+          aerr1[1].style.display="block";
+          evt.preventDefault();
+        }
+        if(!school.value)
+        {
+          aerr1[2].style.display="block";
+          evt.preventDefault();
+        }
+      })
+    }
+  </script>
+</head>
+<body>
+  <div class="login__box">
+    <div class="login__header">
+      <h2>登&nbsp;&nbsp;录&nbsp;&nbsp;界&nbsp;&nbsp;面</h2>
+    </div>
+    <div class="login__body">
+      <form method="get">   
+        <div class="form__group">
+          <label for="username">用户名</label>
+          <input id="username" name="username" type="text" placeholder="请输入用户名">
+          <small style="display:none" class="form_group error">用户名不能为空</small>
+        </div>
+        <div class="form__group">
+          <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+          <input id="password" name="password" type="password" placeholder="请输入密码">
+          <small style="display:none" class="form_group error">密码至少要6位</small>
+        </div>
+        <div class="form__group">
+          <label for="school">学&nbsp;&nbsp;&nbsp;&nbsp;校</label>
+          <select name="school" id="school">
+            <option value="">--请选择学校--</option>
+            <option value="1">华中科技大学</option>
+            <option value="2">武汉大学</option>
+            <option value="3">武汉理工大学</option>
+            <option value="4">中南财经政法大学</option>
+          </select>
+          <small style="display:none" class="form_group error">请选择学校</small>
+        </div>
+        <div class="form__group">
+          <button type="submit">登&nbsp;录</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

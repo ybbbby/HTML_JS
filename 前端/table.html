@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+<style type="text/css">
+	.browser{
+		background:red;
+	}
+	.engine{
+		background:green;
+	}
+</style>
+</head>
+<body>
+<table border="1px solid black">
+<!-- caption is the first element of table -->
+<caption>Browser and its engine</caption>
+	<colgroup>
+		<col class="browser">
+		<col class="engine" span="2">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>browser</th>
+			<th>render engine</th>
+			<th>javascript engine</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>chrome</th>
+			<td rowspan="2">Blink</td>
+			<td rowspan="2">V8</td>
+		</tr>
+		<tr>
+			<th>Opera</th>
+		</tr>
+		<tr>
+			<th>Filefox</th>
+			<td>Gecko</td>
+			<td>SpiderMonkey</td>
+		</tr>
+		<tr>
+			<th>costumed</th>
+			<td colspan="2">222</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

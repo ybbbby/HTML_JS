@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#tab{
+			text-align: center;
+			border:1px solid black;
+		}
+		.active{
+			background: yellow;
+		}
+		ul{
+			margin:0 auto;
+			display:block;
+			text-align: center;
+			height:400px;
+			width:600px;
+		}
+		li{
+			display:inline-block;
+			width:100px;
+			height:100px;
+			border: 3px solid #ccc;
+			margin:10px;
+		}
+		#text{
+			text-align: center;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('tab');
+			var aLi=oDiv.getElementsByTagName('li');
+			var oTxt=document.getElementsByClassName('text')[0];
+			var inf=[
+			'january having pot',
+			'february having pot',
+			'march having pot',
+			'april having pot',
+			'may having pot',
+			'june having pot',
+			'july having pot',
+			'august having pot',			
+			'september having pot',
+			'october having pot',
+			'november having pot',			
+			'december having pot',
+
+			]
+			for(var i=0;i<aLi.length;i++)
+			{
+				aLi[i].index=i;
+				aLi[i].onmouseover=function()
+				{
+					oDiv.getElementsByClassName('active')[0].className='';
+					this.className='active';
+					oTxt.innerHTML='<h2>'+(this.index+1)+'月活动</h2><p>'+inf[this.index]+'</p>'
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+
+<div id="tab" class="calender">
+	<ul>
+		<li class="active"><h2>1</h2><p>JAN</p></li>
+		<li><h2>2</h2><p>FEB</p></li>
+		<li><h2>3</h2><p>MAR</p></li>
+		<li><h2>4</h2><p>APR</p></li>
+		<li><h2>5</h2><p>MAY</p></li>
+		<li><h2>6</h2><p>JUN</p></li>
+		<li><h2>7</h2><p>JUL</p></li>
+		<li><h2>8</h2><p>AUG</p></li>
+		<li><h2>9</h2><p>SEP</p></li>
+		<li><h2>10</h2><p>OCT</p></li>
+		<li><h2>11</h2><p>NOV</p></li>
+		<li><h2>12</h2><p>DEC</p></li>
+	</ul>
+	<div class="text">
+	</div>
+</div>
+</body>
+</html>

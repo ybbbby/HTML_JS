@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+	ul{
+		display: flex;
+		padding:0;
+		background: lightgrey;
+		flex-direction: row-reverse;
+		flex-wrap: wrap;
+	}
+	/*row row-reverse column column-reverse*/
+	li{
+		list-style:none;
+		padding:1em;
+		background: lightblue;
+		width:50%;
+		box-sizing: border-box;
+	}
+	.item-1{
+		flex-grow:1;
+		flex-shrink: 0;
+	}
+	.item-2{
+		background: lightgreen;
+		flex-grow:1;
+	}
+	.item-3{
+		background: lightcoral;
+		flex-grow:1;
+	}
+
+</style>
+</head>
+<body>
+<ul>
+	<li class="item-1">1</li>
+	<li class="item-2">2</li>
+	<li class="item-3">3</li>
+</ul>
+</body>
+</html>

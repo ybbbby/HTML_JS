@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	#ul1{
+		width:400px;
+		height: 400px;
+		border:1px black solid;
+		margin:10px auto;
+		overflow: hidden;
+	}
+	#ul1 li{
+		border-bottom:1px #B187B3 dashed;padding:4px;
+		list-style:none;
+		overflow: hidden;
+		filter:alpha(opacity:0);
+		opacity: 0;
+	}
+
+</style>
+<script src="move.js"></script>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oUl=document.getElementById('ul1');
+	var oBtn=document.getElementById('btn1');
+	var oTxt=document.getElementById('txt1');
+
+	oBtn.onclick=function()
+	{
+		if(oTxt.value=="")
+			return;
+		var oLi=document.createElement('li');
+		oLi.innerHTML=oTxt.value;
+		oTxt.value="";
+
+		oUl.insertBefore(oLi,oUl.children[0]);
+
+		var iHeight=oLi.offsetHeight;
+		oLi.style.height=0;
+		startMove(oLi,{height:iHeight},function(){
+			startMove(oLi,{opacity:100});
+		});
+	}
+}
+</script>
+</head>
+<body>
+<textarea id="txt1" rows="4" cols="40"></textarea>
+<input type="button" value="publish" id="btn1">
+<ul id="ul1">
+	
+</ul>
+</body>
+</html>

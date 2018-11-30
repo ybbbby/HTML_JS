@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+
+<style type="text/css">
+	.red{
+		color:red;;
+	}
+	.bg{
+		background-color: #ccc;
+	}
+	.size{
+		font-size:20px;
+	}
+	.green{
+		color:green;
+	}
+</style>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('div').addClass('red bg size');
+	$('div').removeClass('bg red');
+
+	/*add and delete Class through click*/
+	var count=0;
+	$('div').click(function(){
+		//$(this).toggleClass('red bg'); 点一下加入red和bg类，再点一下删除red和bg类
+		//$(this).toggleClass('red bg',true); 就会加入red和bg类之后无法删除类
+		//$(this).toggleClass('red bg',false); 就只会删除red和bg类
+		$(this).toggleClass('red bg',++count%3==0);//点3下变成红   
+	})
+
+});
+</script>
+</head>
+<body>
+<div>asdjkaskdjhakjs</div>
+<div>akugehrlfasdoifn;aoiusdn</div>
+</body>
+</html>

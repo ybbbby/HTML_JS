@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+#parent{
+	width: 600px;
+	height: 20px;
+	background: #ccc;
+	position: relative;
+	margin:50px auto;
+}
+#div1{
+	width: 20px;
+	height: 20px;
+	background: red;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+#div2{
+	width:300px;
+	height:300px;
+	background:green;
+	margin:50px auto;
+	filter:alpha(opacity:0);
+	opacity: 0;
+}
+</style>
+<script type="text/javascript">
+function getPos(ev)
+{
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	
+	return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop};
+
+}
+window.onload=function()
+{
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var oParent=document.getElementById('parent');
+
+	var disX=0;
+	var disY=0;
+
+	oDiv.onmousedown=function(ev)
+	{
+		var oEvent=ev||event;
+
+		disX=getPos(oEvent).x-oDiv.offsetLeft;
+		document.onmousemove=function(ev)
+		{
+			var oEvent=ev||event;
+			var l=getPos(oEvent).x-disX;
+			var r=document.documentElement.clientWidth||document.body.clientWidth;
+			r=r-oParent.offsetLeft;
+			if(r>oParent.offsetWidth)
+				r=oParent.offsetWidth;
+			r=r-oDiv.offsetWidth;
+			if(l<0)
+				l=0;
+			else if(l>r)
+				l=r;
+			
+			oDiv.style.left=l+'px';
+
+			var scale=l/(oParent.offsetWidth-oDiv.offsetWidth);
+			//document.title=scale;
+
+			/*
+			oDiv2.style.width=400*scale+'px';
+			oDiv2.style.height=400*scale+'px';
+			*/
+
+			oDiv2.style.filter="alpha(opacity:"+scale*100+")";
+			oDiv2.style.opacity=scale;
+			
+		}
+		document.onmouseup=function(ev)
+		{
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		return false;
+
+	};
+	
+};
+</script>
+</head>
+<body>
+<div id="parent">
+	<div id="div1">
+	</div>
+</div>
+<div id="div2"></div>
+</body>
+</html>

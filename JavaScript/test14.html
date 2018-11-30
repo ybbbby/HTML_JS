@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+
+	</title>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oBtn=document.getElementById('btn1');
+			var oUl=document.getElementById('ul1');
+			var oTxt=document.getElementById('txt1');
+			//insert in the last
+			/*
+			oBtn.onclick=function()
+			{
+				var oLi=document.createElement('li');
+				oLi.innerHTML=oTxt.value;
+				oUl.appendChild(oLi);
+			}*/
+			oBtn.onclick=function()
+			{
+				var oLi=document.createElement('li');
+				oLi.innerHTML=oTxt.value;
+				var aLi=oUl.getElementsByTagName('li');
+				if(aLi.length>0)
+				{
+					oUl.insertBefore(oLi,aLi[2]);
+				}
+				else
+				{
+					oUl.appendChild(oLi);
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+<input type="text" id="txt1">
+<input type="button" value="create element!" id="btn1">
+<ul id="ul1">
+</ul>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.show').click(function(){
+		$('.box').first().show("fast",function(){
+			$(this).next().show('fast',function testShow(){
+				$(this).next('.box').show('fast',testShow);
+			})
+		});
+	})
+	$('.hide').click(function(){
+		$('.box').last().hide("fast",function(){
+			$(this).prev().hide('fast',function testHide(){
+				$(this).prev('.box').hide('fast',testHide);
+			})
+		});
+	})
+})
+</script>
+<style type="text/css">
+	.box{
+		padding:5px;
+		margin-right: 5px;
+		background:orange;
+		float: left;
+		display: none;
+	}
+	div{
+		padding: 5px;
+	}
+</style>
+</head>
+<body>
+<div>
+<input type="button" class="show" value="show" name="">
+<input type="button" class="hide" value="hide" name="">
+</div>
+<div class="box">
+	How
+</div>
+<div class="box">
+	are
+</div>
+<div class="box">
+	you
+</div>
+<div class="box">
+	tody
+</div>
+</body>
+</html>

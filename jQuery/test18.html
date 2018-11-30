@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('div').after('<strong>I am strong</strong>');
+	$('div').after(function(index,html){
+		return "old one say:"+html+index;
+	})
+
+
+	//before 的用法和after一样，不过是插入在所选节点的前面
+})
+</script>
+</head>
+<body>
+<div>I am Div</div>
+</body>
+</html>

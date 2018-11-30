@@ -1,0 +1,25 @@
+table
+{
+    border-collapse:collapse;
+}
+
+table,th, td
+{
+    padding:0px;
+}
+#mainBody{width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #BEC0C2;
+    padding-bottom: 20%;
+    padding-top: 10%;
+}
+#mainBody >h1{color:white;
+    text-align:center;
+}
+
+#imagesGrid img:hover {
+    transform:scale(1.1);
+    box-shadow:0px 0px 30px black;
+    border-radius: 15px;
+}

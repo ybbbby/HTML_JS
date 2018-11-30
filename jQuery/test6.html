@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="jquery-3.2.0.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$("#box p").css('color','red');//chose every p tag in box
+	$('#box').find('p').css('color','blue'); //It's similar to the upper one but with some unknown differences
+
+
+	$('#box>p').css('color','green');//only select the son nodes,not include grandson or even more deeper relation
+	$("#box").children('p').css('color','yellow');//It's similar to the upper one but with some unknown differences
+
+
+//next,nextAll,prev,prevAll不传参数的时候，等于传了一个通配符*
+
+	$('div+span').css('color','brown');// only select a node after a specific same level node.只获取某节点后一个同级DOM对象
+	$('div').next('span').css('color','#ccc');//It's similar to the upper one but with some unknown differences
+
+
+	$('#div2~span').css('color','#593');//select all the approval nodes after a specific same level node.
+	$('#div2').nextAll('span').css('color','navy');
+
+
+	//没有css方式用字符串解析来解析匹配前面的节点。只能用prev和prevAll来匹配，用法和next,nextAll一样
+	$("#div2").prevAll().css('color','purple');
+	$("#div2").prev().css('color','brown');
+
+  	$("#div2").siblings().css('color','yellow');//前后同级元素
+
+  	//nextUntil()和prevUntil()方法是选定同级的下面或者上面的所有节点，选定非指定的所有元素，一旦遇到指定元素就停止选定
+  	$('#div2').prevUntil('p').css('color','pink');
+  	$('#div2').nextUntil('p').css('color','pink');
+
+})
+</script>
+</head>
+<body>
+<div id="box">
+	<p>p</p>
+	<p>p</p>
+	<p>p</p>
+	<span>
+		<p>p</p>
+		<p>p</p>
+		<p>p</p>
+	</span>
+</div>
+
+<span>span</span>
+<p>p</p>
+<span>span</span>
+<span>span</span>
+<div id="div2">div</div>
+<span>span</span>
+<p>p</p>
+<span>span</span>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		var aA=document.getElementsByTagName('a');
+		var oUl=document.getElementById('ul1');
+		for(var i=0;i<aA.length;i++)
+		{
+			aA[i].onclick=function()
+			{
+				oUl.removeChild(this.parentNode);
+			}
+		}
+		//low version IE
+		//oUl.firstChild.style.background="red";
+		//other
+		if(oUl.firstElementChild)
+		{
+			oUl.firstElementChild.style.background="red";
+			oUl.firstElementChild.nextElementSibling.style.background="red";
+			oUl.firstElementChild.nextElementSibling.previousElementSibling.style.background="blue";
+		}
+		else
+		{
+			oUl.firstChild.style.background="red";
+			oUl.firstChild.nextSibling.style.background="red";
+			oUl.firstChild.nextSibling.previousSibling.style.background="blue";
+		}
+	}
+	</script>
+</head>
+<body>
+<ul id="ul1">
+	<li>aaa<a href="javascript:;">delete</a></li>
+	<li>aaaw<a href="javascript:;">delete</a></li>
+	<li>aqweqw<a href="javascript:;">delete</a></li>
+	<li>aadfgdfg<a href="javascript:;">delete</a></li>
+	<li>aasdfgsdf<a href="javascript:;">delete</a></li>
+	<li>aaslidhfg<a href="javascript:;">delete</a></li>
+</ul>
+
+</body>
+</html>
